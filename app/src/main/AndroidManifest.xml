@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DataDissolveActivity"
+            android:exported="false"
+            android:label="@string/title_activity_data_dissolve"
+            android:theme="@style/Theme.Data_Dissolve" />
     </application>
 
 </manifest>
