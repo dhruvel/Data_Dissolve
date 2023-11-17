@@ -28,5 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private void launchDataDissolveActivity() {
         android.content.Intent intent = new android.content.Intent(this, DataDissolveActivity.class);
         startActivity(intent);
+
     }
 }
