@@ -57,6 +57,7 @@ public class DataDissolveActivity extends AppCompatActivity {
     private void DissolveData(Uri fileUri) {
         try {
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "w");
+            assert pfd != null;
             FileOutputStream outputStream = new FileOutputStream(pfd.getFileDescriptor());
 
             byte[] data = new byte[1024];
@@ -74,9 +75,9 @@ public class DataDissolveActivity extends AppCompatActivity {
             Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
             // Delete the file
             DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-            if (documentFile != null) {
+//            if (documentFile != null) {
 //                documentFile.delete();
-            }
+//            }
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
