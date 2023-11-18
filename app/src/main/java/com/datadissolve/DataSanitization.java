@@ -1,11 +1,11 @@
-package com.example.data_dissolve;
+package com.datadissolve;
 
 import java.util.Arrays;
 import java.security.SecureRandom;
 
 
 public class DataSanitization {
-    public static void wipeDataGuttman(byte[] data) {
+    public static void wipeDataGutmann(byte[] data) {
         byte[] pattern1 = {(byte) 0x55, (byte) 0xAA};
         byte[] pattern2 = {(byte) 0x92, (byte) 0x49};
         byte[] pattern3 = {(byte) 0x49, (byte) 0x92};
@@ -59,7 +59,7 @@ public class DataSanitization {
         Arrays.fill(data, (byte) 0x00);
     }
 
-    public static void wipeDataSchneider(byte[] data) {
+    public static void wipeDataSchneier(byte[] data) {
         byte[] pattern1 = {(byte) 0x00};
         byte[] pattern2 = {(byte) 0xFF};
         byte[] pattern3 = new byte[data.length];

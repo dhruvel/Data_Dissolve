@@ -1,4 +1,4 @@
-package com.example.data_dissolve;
+package com.db.data_dissolve;
 
 import org.junit.Test;
 

@@ -1,9 +1,12 @@
-package com.example.data_dissolve;
+package com.datadissolve;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.datadissolve.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(android.view.View v) {
                 // TODO : click event
-                launchDataDissolveActivity();
+                launchDataSelectionActivity();
             }
 
         });
 
     }
 
-    private void launchDataDissolveActivity() {
-        android.content.Intent intent = new android.content.Intent(this, DataDissolveActivity.class);
+    private void launchDataSelectionActivity() {
+        android.content.Intent intent = new android.content.Intent(this, DataSanitizationSelectionActivity.class);
         startActivity(intent);
     }
 }

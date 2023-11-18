@@ -43,4 +43,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="click_me_gutmann">Click Me Gutmann</string>
+    <string name="click_me_default">Click Me Default</string>
+    <string name="click_me_dod">Click Me DoD</string>
+    <string name="click_me_schneier">Click Me Schneier</string>
+    <string name="pick_file_default">Pick File Default</string>
 </resources>
