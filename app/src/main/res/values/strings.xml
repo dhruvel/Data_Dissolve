@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">Data_Dissolve</string>
     <string name="title_activity_data_dissolve">DataDissolveActivity</string>
+
+    <!-- app guide strings -->
+    <string name="guide_welcome">Welcome too Data Dissolve</string>
+    <string name="app_summary">This is Data Dissolve the newest solution to personal data security. We provide the ability
+        for users to protect their data from identity theft and data breaches. By allowing users to delete their data using industry
+        and governmental standard data deletion algorithms giving users the peace of mind that their data has been properly deleted.</string>
+    <string name="how_to_title">How to use Data Dissolve</string>
+    <string name="how_to_step_1">Step 1. Enter Your pin and  login to the App</string>
+    <string name="how_to_step_2">Step 2. Open the file selector and select the file that you want to be deleted</string>
+    <string name="how_to_step_3">Step 3. Your File has been deleted now have the piece and mind knowing your data has been properly deleted!</string>
+    <string name="fragment_icon">Help</string>
+
+    <!-- pin login strings -->
+    <string name="login_button">Login</string>
+    <string name="clear_button">Clear</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -43,4 +59,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

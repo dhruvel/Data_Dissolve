@@ -14,14 +14,14 @@ public class MainActivity extends AppCompatActivity {
 
         Button login_btn = findViewById(R.id.loginButton);
 
-        login_btn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                // TODO : click event
-                launchDataDissolveActivity();
-            }
-
+        login_btn.setOnClickListener(v -> {
+            // TODO : click event
+            launchDataDissolveActivity();
         });
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new open_app_guide())
+                .commit();
 
     }
 
