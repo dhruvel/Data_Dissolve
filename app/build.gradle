@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.data_dissolve'
+    namespace 'com.datadissolve'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.data_dissolve"
+        applicationId "com.datadissolve"
         minSdk 28
         targetSdk 33
         versionCode 1

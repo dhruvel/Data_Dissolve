@@ -1,4 +1,4 @@
-package com.example.data_dissolve;
+package com.db.data_dissolve;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.data_dissolve", appContext.getPackageName());
+        assertEquals("com.example.datadissolve", appContext.getPackageName());
     }
 }
