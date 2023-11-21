@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginTop="160dp"
-        android:src="@drawable/icon1"
+        android:src="@mipmap/icon1_foreground"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
