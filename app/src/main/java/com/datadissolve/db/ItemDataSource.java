@@ -1,4 +1,4 @@
-package com.db;
+package com.datadissolve.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDataSource {
-
     private SQLiteDatabase database;
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     public ItemDataSource(Context context) {
         dbHelper = new DatabaseHelper(context);
@@ -25,44 +24,38 @@ public class ItemDataSource {
         dbHelper.close();
     }
 
-    public long insertItem(Item item) {
+    public void insertItem(Item item) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ITEM_NAME, item.getItemName());
-        return database.insert(DatabaseHelper.TABLE_ITEMS, null, values);
+        database.insert(DatabaseHelper.TABLE_ITEMS, null, values);
     }
 
-    public int updateItem(Item item) {
+    public void updateItem(Item item) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ITEM_NAME, item.getItemName());
-        return database.update(DatabaseHelper.TABLE_ITEMS, values,
+        database.update(DatabaseHelper.TABLE_ITEMS, values,
                 DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(item.getId())});
     }
 
-    public void deleteItem(long itemId) {
+    public void deleteItem(String itemName) {
         database.delete(DatabaseHelper.TABLE_ITEMS,
-                DatabaseHelper.COLUMN_ID + " = ?", new String[]{String.valueOf(itemId)});
-    }
-
-    public void deleteAllItems() {
-        database.delete(DatabaseHelper.TABLE_ITEMS, null, null);
+                DatabaseHelper.COLUMN_ITEM_NAME + " = ?", new String[]{String.valueOf(itemName)});
     }
 
     public List<String> getListOfItems() {
         List<String> itemList = new ArrayList<>();
         Cursor cursor = database.query(DatabaseHelper.TABLE_ITEMS, null, null, null, null, null, null);
-
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
                     Item item = new Item();
-                    item.setId(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.COLUMN_ID)));
-                    item.setItemName(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_ITEM_NAME)));
+                    item.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)));
+                    item.setItemName(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ITEM_NAME)));
                     itemList.add(item.getItemName());
                 } while (cursor.moveToNext());
             }
             cursor.close();
         }
-
         return itemList;
     }
 }

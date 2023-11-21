@@ -1,15 +1,22 @@
-package com.datadissolve;
+package com.datadissolve.ui;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.documentfile.provider.DocumentFile;
 
+import com.datadissolve.util.DataSanitization;
+import com.datadissolve.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -22,24 +29,32 @@ import java.util.Random;
  */
 public class DataDissolveActivity extends AppCompatActivity {
     private static final int PICK_FILE_REQUEST = 1;
-    private final DataSanitization dataSanitization = new DataSanitization();
+    private String selectedMethod = "Default";
+    private ProgressBar progressBar;
+    private TextView progressText;
+    private ImageView successImage;
+    private TextView backBtn;
+    private DocumentFile documentFile;
 
-    private static final String TAG = "DataDissolveActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_disssolve);
 
-        Button btnFileSelection = findViewById(R.id.FilePickerButton);
-        Button btnGutmannDissolve = findViewById(R.id.gutmannDissolveButton);
-        Button btnDoDDissolve = findViewById(R.id.dodDissolveButton);
-        Button btnSchneierDissolve = findViewById(R.id.schneierDissolveButton);
-        btnFileSelection.setOnClickListener(new Button.OnClickListener() {
+        selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
+        Toast.makeText(this, "Selected method: " + selectedMethod, Toast.LENGTH_SHORT).show();
+        progressBar = findViewById(R.id.progressBar);
+        progressText = findViewById(R.id.progressText);
+        progressText.setText(R.string.inProgressText);
+        successImage = findViewById(R.id.successImage);
+        backBtn = findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestDocument();
+                finish();
             }
         });
+        requestDocument();
     }
 
     private void requestDocument() {
@@ -54,15 +69,18 @@ public class DataDissolveActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_FILE_REQUEST && resultCode == RESULT_OK && data != null) {
-            // Get the Uri of the selected file
             Uri uri = data.getData();
             DissolveData(uri);
         }
     }
 
     private void DissolveData(Uri fileUri) {
+        DataDissolveAsyncTask asyncTask = new DataDissolveAsyncTask(this, progressBar, fileUri, selectedMethod);
+        asyncTask.execute();
+    }
+
+    private void DataDissolveDefault(Uri fileUri) {
         try {
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "w");
             assert pfd != null;
@@ -77,18 +95,13 @@ public class DataDissolveActivity extends AppCompatActivity {
             for (long i = 0; i < fileSize; i += data.length) {
                 outputStream.write(data);
             }
-
             outputStream.close();
             pfd.close();
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
             // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//            if (documentFile != null) {
-//                documentFile.delete();
-//            }
+//          deleteFile(fileUri);
+            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -123,9 +136,7 @@ public class DataDissolveActivity extends AppCompatActivity {
 
             // Delete the file
 //            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//            if (documentFile != null) {
-//                documentFile.delete();
-//            }
+//          deleteFile(fileUri);
 
             Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -164,10 +175,7 @@ public class DataDissolveActivity extends AppCompatActivity {
             pfd.close();
 
             // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//            if (documentFile != null) {
-//                documentFile.delete();
-//            }
+//            deleteFile(fileUri);
 
             Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -206,10 +214,7 @@ public class DataDissolveActivity extends AppCompatActivity {
             pfd.close();
 
             // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//            if (documentFile != null) {
-//                documentFile.delete();
-//            }
+//            deleteFile(fileUri);
 
             Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -218,4 +223,84 @@ public class DataDissolveActivity extends AppCompatActivity {
         }
     }
 
+    private void deleteFile(Uri fileUri) {
+        documentFile = DocumentFile.fromSingleUri(this, fileUri);
+        if (documentFile != null) {
+            documentFile.delete();
+        }
+    }
+
+    /**
+     * This class is used to dissolve data in the background.
+     */
+    @SuppressLint("StaticFieldLeak")
+    public class DataDissolveAsyncTask extends AsyncTask<Void, Integer, String> {
+        private final Context context;
+        private final ProgressBar progressBar;
+        private final Uri uri;
+        private final String additionalData;
+
+        public DataDissolveAsyncTask(Context context, ProgressBar progressBar, Uri uri, String additionalData) {
+            this.context = context;
+            this.progressBar = progressBar;
+            this.uri = uri;
+            this.additionalData = additionalData;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Show the ProgressBar before starting the background task
+            progressBar.setVisibility(android.view.View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = null;
+            if (uri != null) {
+                try {
+                    switch (selectedMethod) {
+                        case "Default":
+                            DataDissolveDefault(uri);
+                            break;
+                        case "Gutmann":
+                            DissolveDataGutmann(uri);
+                            break;
+                        case "DoD":
+                            DissolveDataDoD(uri);
+                            break;
+                        case "Schneier":
+                            DissolveSchneier(uri);
+                            break;
+                        default:
+                            DataDissolveDefault(uri);
+                            break;
+                    }
+                    result = "Success";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            // Hide the ProgressBar after the background task is complete
+            progressBar.setVisibility(View.GONE);
+            successImage.setVisibility(View.VISIBLE);
+            backBtn.setVisibility(View.VISIBLE);
+            if ("Success".equals(result)) {
+                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                progressText.setText(R.string.textDisplaySuccess);
+                successImage.setImageResource(R.drawable.ic_success);
+            }
+            else {
+                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+                progressText.setText(R.string.textDisplayFailed);
+                successImage.setImageResource(R.drawable.task_error);
+            }
+        }
+    }
 }

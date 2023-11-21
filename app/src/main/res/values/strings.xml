@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Data_Dissolve</string>
+    <string name="app_name">Data Dissolve</string>
     <string name="title_activity_data_dissolve">DataDissolveActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -7,45 +7,48 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="click_me_gutmann">Click Me Gutmann</string>
     <string name="click_me_default">Click Me Default</string>
     <string name="click_me_dod">Click Me DoD</string>
     <string name="click_me_schneier">Click Me Schneier</string>
     <string name="pick_file_default">Pick File Default</string>
+    <string name="description_default">The Default method employs a basic data sanitization technique by overwriting a file\'s content with randomly generated data. It generates a random byte array and writes it to the file in a loop until the entire file is filled. While this method introduces randomness for added security, it may not be as robust as more advanced algorithms like Gutmann or DoD methods. Please select any other method if you want to employ standardized sanitization methods to make your file unrecoverable.</string>
+    <string name="description_gutmann">The Gutmann method is a data sanitization algorithm designed by Peter Gutmann. It is known for its thoroughness and involves overwriting data on a storage medium with a specific pattern of data multiple times. The method consists of 35 passes, each with a unique pattern, to ensure secure and irreversible data destruction. While it was initially developed for older technologies, its applicability to modern storage media is a subject of debate due to advancements in data recovery methods.</string>
+    <string name="description_dod">The DoD data sanitization method is a set of standards defined by the U.S. Department of Defense for secure data erasure. The DoD 5220.22-M standard, in particular, outlines a three-pass approach for sanitizing data. The method involves overwriting the storage medium with a specific pattern in the first pass, its complement in the second pass, and a random pattern in the third pass. This method was originally designed for hard disk drives and is commonly used for secure data deletion in various contexts, including military and government applications.</string>
+    <string name="description_schneier">The Schneier method, named after Bruce Schneier, is a simpler data sanitization approach compared to the Gutmann method. It involves overwriting the entire storage medium with a single pattern of data, typically zeros. While not as comprehensive as the Gutmann method, the Schneier method is considered sufficient for most common scenarios and provides a good balance between security and practicality.</string>
+    <string name="description_none">Please select an Item</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="inProgressText">In progress...</string>
+    <string name="textDisplaySuccess">Success</string>
+    <string name="textDisplayFailed">Failed</string>
+    <string name="infoBarActivity">"Activity: "</string>
+    <string name="author_dhruv">Author: Dhruv Sagar</string>
+    <string name="appInfoVersionNumber">"Version: "</string>
+    <string name="textChooseAnotherFile">Choose another File</string>
+    <string name="textSuccessImageDescription">Success indicator</string>
+    <string name="infoMenuDescription">Info menu icon</string>
+    <string name="infoDialogInstructionTitle">Instructions:</string>
+    <string name="infoDialogCloseButtonText">Close</string>
+    <string name="infoDialogAppInfoTitle">App Information</string>
+    <string name="infoDialogAuthorNameDhruv">Author: Dhruv Sagar</string>
+    <string name="firstFragmentText">Please Press Next Button</string>
+    <string name="secondFragmentText">Please Press Previous Button</string>
+    <string name="itemListInitialDescription">Please select an item</string>
+    <string name="itemListSelectItemToPerformDD">Select an item to perform data dissolve</string>
+    <string name="itemListIconDescription">Press here to continue</string>
+    <string name="itemListStartOver">Start Over</string>
+    <string name="itemListRefreshButtonDescription">Press here to refresh the list</string>
+    <string name="listContentTextView">TextView</string>
+    <string name="listContentImageViewDescription">Press here to delete method</string>
+    <string name="lorem_ipsum2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus sed viverra tellus in hac. Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Sagittis id consectetur purus ut. Congue quisque egestas diam in. Quis lectus nulla at volutpat. Interdum posuere lorem ipsum dolor sit. Sem et tortor consequat id porta nibh venenatis cras. Ac tincidunt vitae semper quis lectus nulla at volutpat. Augue interdum velit euismod in pellentesque massa. Interdum velit laoreet id donec ultrices tincidunt arcu non. Elit duis tristique sollicitudin nibh sit amet commodo. Aliquam id diam maecenas ultricies mi. Ornare suspendisse sed nisi lacus sed viverra. Praesent semper feugiat nibh sed pulvinar proin gravida. Tincidunt vitae semper quis lectus. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Tortor at risus viverra adipiscing at in. Sapien pellentesque habitant morbi tristique senectus.
+
+Duis ut diam quam nulla. Diam donec adipiscing tristique risus nec feugiat in fermentum. Quisque non tellus orci ac auctor augue mauris augue. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Convallis tellus id interdum velit. Turpis massa sed elementum tempus egestas. Varius morbi enim nunc faucibus a. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Malesuada proin libero nunc consequat interdum varius sit amet. Nisl nisi scelerisque eu ultrices vitae auctor eu. Eget nulla facilisi etiam dignissim diam quis. Hac habitasse platea dictumst vestibulum rhoncus. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Dictum varius duis at consectetur lorem donec massa. Amet aliquam id diam maecenas ultricies mi. Proin nibh nisl condimentum id venenatis. Amet commodo nulla facilisi nullam vehicula ipsum a arcu cursus. In dictum non consectetur a erat nam at lectus. Viverra adipiscing at in tellus integer feugiat scelerisque varius.
+
+Rhoncus dolor purus non enim praesent elementum facilisis. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Orci porta non pulvinar neque laoreet. Neque egestas congue quisque egestas diam in. Dolor purus non enim praesent elementum facilisis leo vel fringilla. Scelerisque varius morbi enim nunc faucibus a. Orci dapibus ultrices in iaculis nunc sed augue lacus viverra. Purus sit amet luctus venenatis. Mattis rhoncus urna neque viverra justo nec ultrices dui sapien. Est velit egestas dui id ornare arcu odio ut sem. Tortor dignissim convallis aenean et tortor. Nunc aliquet bibendum enim facilisis. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Etiam sit amet nisl purus in mollis. Scelerisque varius morbi enim nunc faucibus a. Ultrices in iaculis nunc sed augue lacus viverra. Elit at imperdiet dui accumsan sit amet. Aliquam id diam maecenas ultricies mi eget mauris pharetra et.
+
+Aliquam malesuada bibendum arcu vitae. At varius vel pharetra vel turpis nunc eget lorem dolor. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Non odio euismod lacinia at. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Mi bibendum neque egestas congue quisque egestas diam in. Accumsan in nisl nisi scelerisque. Venenatis urna cursus eget nunc. Nibh praesent tristique magna sit amet purus gravida. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Facilisi nullam vehicula ipsum a. Tortor at auctor urna nunc id cursus metus.
+
+Consequat ac felis donec et odio pellentesque. Ut sem nulla pharetra diam sit. At auctor urna nunc id cursus. Tortor at auctor urna nunc id cursus metus aliquam eleifend. Massa enim nec dui nunc mattis enim. Morbi tristique senectus et netus et. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Non pulvinar neque laoreet suspendisse. Scelerisque mauris pellentesque pulvinar pellentesque. Cursus sit amet dictum sit amet justo donec. Integer feugiat scelerisque varius morbi enim. Risus sed vulputate odio ut enim blandit.</string>
+
 </resources>

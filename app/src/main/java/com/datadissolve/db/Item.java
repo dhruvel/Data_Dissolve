@@ -1,4 +1,4 @@
-package com.db;
+package com.datadissolve.db;
 
 public class Item {
     private long id;
