@@ -43,5 +43,6 @@
     <string name="itemListRefreshButtonDescription">सूची को रिफ़्रेश करने के लिए यहां दबाएं</string>
     <string name="listContentTextView">टेक्स्ट व्यू</string>
     <string name="listContentImageViewDescription">यहां दबाएं डिलीट मेथड करने के लिए</string>
+    <string name="chosse_a_model_below">Chosse a model below:</string>
 
 </resources>

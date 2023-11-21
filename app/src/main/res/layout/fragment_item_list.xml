@@ -14,7 +14,7 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
-        android:text="Chosse a model below:"
+        android:text="@string/chosse_a_model_below"
         />
 
     <androidx.recyclerview.widget.RecyclerView
