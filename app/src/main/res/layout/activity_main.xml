@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.datadissolve.MainActivity">
+    tools:context="com.datadissolve.MainActivity"
+    android:background="#ADD8E6">
+
+    <ImageView
+        android:id="@+id/LogoImageL"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/icon1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/loginButton"

@@ -3,24 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ADD8E6">
+
+    <TextView
+        android:id="@+id/choocemodel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="Chosse a model below:"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="709dp"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:padding="5dp"
+        android:background="#FFFFFF"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
+        android:background="#6610f2"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="#d9d9d9">
 
         <TextView
             android:id="@+id/data_dissolve_description_tv"
@@ -36,21 +50,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
+        android:background="#6610f2"/>
 
     <LinearLayout
         android:id="@+id/perform_data_dissolve_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:visibility="invisible"
-        tools:visibility="visible">
+        tools:visibility="visible"
+        android:background="@drawable/bottonlayout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,30 +78,44 @@
 
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/button_init"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="79dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/itemListStartOver" />
+            android:layout_margin="25dp"
+            android:layout_weight="1"
+            android:padding="8dp" />
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/button_init"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/itemListRefreshButtonDescription"
-            android:padding="8dp"
-            android:src="@drawable/ic_restart" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/bottonlayout">
+
+            <TextView
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/itemListStartOver"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/itemListRefreshButtonDescription"
+                android:padding="8dp"
+                android:src="@drawable/ic_restart" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

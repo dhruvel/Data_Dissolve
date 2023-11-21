@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.datadissolve.ui.DataDissolveActivity">
+    tools:context="com.datadissolve.ui.DataDissolveActivity"
+    android:background="#ADD8E6">
 
     <ProgressBar
         android:id="@+id/progressBar"
