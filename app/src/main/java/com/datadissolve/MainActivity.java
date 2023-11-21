@@ -3,7 +3,6 @@ package com.datadissolve;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
-
 import com.datadissolve.ui.DataSanitizationSelectionActivity;
 
 /**

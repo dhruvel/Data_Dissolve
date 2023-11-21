@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pin_login">
+    tools:context="com.datadissolve.ui.pin_login">
 
     <EditText
         android:id="@+id/pinEntry"
@@ -32,7 +32,6 @@
         android:layout_height="75dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="582dp"
-        android:onClick="onLoginButtonClick"
         android:text="@string/login_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,14 +39,17 @@
     <Button
         android:id="@+id/button7"
         style="@style/NumericButton"
+        android:layout_width="87dp"
+        android:layout_height="71dp"
         android:layout_marginStart="256dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="330dp"
         android:onClick="onNumericButtonClick"
         android:text="9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.2"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -64,12 +66,12 @@
         tools:ignore="HardcodedText" />
 
     <Button
+        android:id="@+id/clear_button"
         style="@style/NumericButton"
         android:layout_width="115dp"
         android:layout_height="79dp"
         android:layout_marginTop="582dp"
         android:layout_marginEnd="80dp"
-        android:onClick="onClearButtonClick"
         android:text="@string/clear_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,70 +81,58 @@
         style="@style/NumericButton"
         android:layout_width="87dp"
         android:layout_height="71dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="12dp"
         android:onClick="onNumericButtonClick"
         android:text="8"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/button7"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toEndOf="@+id/button8"
         app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.941"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button8"
         style="@style/NumericButton"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="259dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onNumericButtonClick"
         android:text="7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/button9"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button5"
         style="@style/NumericButton"
-        android:layout_marginStart="256dp"
-        android:layout_marginBottom="418dp"
+        android:layout_marginStart="258dp"
+        android:layout_marginTop="20dp"
         android:onClick="onNumericButtonClick"
         android:text="6"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button4"
         style="@style/NumericButton"
         android:layout_marginStart="160dp"
-        android:layout_marginBottom="417dp"
+        android:layout_marginTop="20dp"
         android:onClick="onNumericButtonClick"
         android:text="5"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button9"
         style="@style/NumericButton"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="417dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onNumericButtonClick"
         android:text="4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button10"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText" />
 
     <Button

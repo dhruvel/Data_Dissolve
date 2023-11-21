@@ -3,6 +3,7 @@ package com.datadissolve.ui;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.datadissolve.R;
@@ -19,6 +20,9 @@ public class DataSanitizationSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
+
+        Log.i("DataSanitizationSelection", "In onCreate");
+
         fab = findViewById(R.id.fab);
         setupFab();
         if (savedInstanceState == null) {

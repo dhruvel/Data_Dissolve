@@ -1,8 +1,9 @@
-package com.example.data_dissolve;
+package com.datadissolve.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import com.datadissolve.R;
 
 public class AppGuide extends AppCompatActivity {
 

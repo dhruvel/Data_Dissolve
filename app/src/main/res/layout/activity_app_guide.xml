@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".AppGuide">
+    tools:context="com.datadissolve.ui.AppGuide">
 
     <!-- Summary Section -->
     <TextView
@@ -37,6 +37,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/how_to_step_1"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_step_2"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_step_3"
         android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

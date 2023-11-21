@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,6 +36,8 @@ public class DataDissolveActivity extends AppCompatActivity {
     private ImageView successImage;
     private TextView backBtn;
     private DocumentFile documentFile;
+    private Button deleteFile;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class DataDissolveActivity extends AppCompatActivity {
         progressText.setText(R.string.inProgressText);
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
+        deleteFile = findViewById(R.id.delete_file_button);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +59,9 @@ public class DataDissolveActivity extends AppCompatActivity {
             }
         });
         requestDocument();
+
+        deleteFile.setOnClickListener(v -> deleteFile(uri));
+
     }
 
     private void requestDocument() {
@@ -70,7 +77,7 @@ public class DataDissolveActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_FILE_REQUEST && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
+            uri = data.getData();
             DissolveData(uri);
         }
     }
@@ -228,6 +235,8 @@ public class DataDissolveActivity extends AppCompatActivity {
         if (documentFile != null) {
             documentFile.delete();
         }
+
+        Toast.makeText(this, "File removed from system", Toast.LENGTH_SHORT).show();
     }
 
     /**

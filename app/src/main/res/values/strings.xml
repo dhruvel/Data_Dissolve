@@ -50,5 +50,15 @@ Rhoncus dolor purus non enim praesent elementum facilisis. Vulputate eu sceleris
 Aliquam malesuada bibendum arcu vitae. At varius vel pharetra vel turpis nunc eget lorem dolor. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Non odio euismod lacinia at. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Mi bibendum neque egestas congue quisque egestas diam in. Accumsan in nisl nisi scelerisque. Venenatis urna cursus eget nunc. Nibh praesent tristique magna sit amet purus gravida. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Facilisi nullam vehicula ipsum a. Tortor at auctor urna nunc id cursus metus.
 
 Consequat ac felis donec et odio pellentesque. Ut sem nulla pharetra diam sit. At auctor urna nunc id cursus. Tortor at auctor urna nunc id cursus metus aliquam eleifend. Massa enim nec dui nunc mattis enim. Morbi tristique senectus et netus et. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Non pulvinar neque laoreet suspendisse. Scelerisque mauris pellentesque pulvinar pellentesque. Cursus sit amet dictum sit amet justo donec. Integer feugiat scelerisque varius morbi enim. Risus sed vulputate odio ut enim blandit.</string>
+    <string name="login_button">Login</string>
+    <string name="clear_button">Clear</string>
+    <string name="guide_welcome">Welcome To Data Dissolve</string>
+    <string name="app_summary">app summary place holder</string>
+    <string name="how_to_title">How to use Data Dissolve</string>
+    <string name="how_to_step_1">Step 1. Place Holder</string>
+    <string name="how_to_step_2">Step 2. Place Holder</string>
+    <string name="how_to_step_3">Step 3. Place Holder</string>
+    <string name="fragment_icon">Help</string>
+    <string name="delete_file_button">Remove File from The System</string>
 
 </resources>
