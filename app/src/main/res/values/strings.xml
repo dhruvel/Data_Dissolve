@@ -51,5 +51,7 @@ Aliquam malesuada bibendum arcu vitae. At varius vel pharetra vel turpis nunc eg
 
 Consequat ac felis donec et odio pellentesque. Ut sem nulla pharetra diam sit. At auctor urna nunc id cursus. Tortor at auctor urna nunc id cursus metus aliquam eleifend. Massa enim nec dui nunc mattis enim. Morbi tristique senectus et netus et. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Non pulvinar neque laoreet suspendisse. Scelerisque mauris pellentesque pulvinar pellentesque. Cursus sit amet dictum sit amet justo donec. Integer feugiat scelerisque varius morbi enim. Risus sed vulputate odio ut enim blandit.</string>
     <string name="chosse_a_model_below">Choose a model below:</string>
+    <string name="login_button">Login</string>
+    <string name="clear_button">Clear</string>
 
 </resources>

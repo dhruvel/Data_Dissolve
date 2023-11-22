@@ -44,5 +44,7 @@
     <string name="listContentTextView">टेक्स्ट व्यू</string>
     <string name="listContentImageViewDescription">यहां दबाएं डिलीट मेथड करने के लिए</string>
     <string name="chosse_a_model_below">कृपया नीचे दिए गए मॉडल में से एक चुनें</string>
+    <string name="login_button">Login</string>
+    <string name="clear_button">Clear</string>
 
 </resources>

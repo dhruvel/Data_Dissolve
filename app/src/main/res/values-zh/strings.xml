@@ -43,5 +43,7 @@
     <string name="listContentTextView">文本视图</string>
     <string name="listContentImageViewDescription">按这里删除方法</string>
     <string name="chosse_a_model_below">选择下面的一个模型:</string>
+    <string name="login_button">登录</string>
+    <string name="clear_button">清除</string>
 
 </resources>
