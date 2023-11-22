@@ -58,6 +58,13 @@
 您现在可以放心了，因为您的数据已被妥善删除，并受到恶意实体的保护
                                             </string>
     <string name="deleteFileButton">移除文件</string>
-
+    <string name="toast_selected_method">"选择的方法: "</string>
+    <string name="toast_dissolve_data_successfully">数据消融成功</string>
+    <string name="toast_dissolve_data_failed">数据消融失败</string>
+    <string name="toast_success">成功</string>
+    <string name="toast_failed">失败</string>
+    <string name="toast_clicked_on">"点击了 "</string>
+    <string name="toast_login_successful">登录成功</string>
+    <string name="toast_incorrect_pin_try_again">密码错误，请重试</string>
 
 </resources>

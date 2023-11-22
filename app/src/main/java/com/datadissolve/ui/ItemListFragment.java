@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * A fragment representing a list of Items.
+ * @noinspection ALL
  */
 public class ItemListFragment extends Fragment {
     private List<String> selectionListFromDB;
@@ -77,9 +78,7 @@ public class ItemListFragment extends Fragment {
     }
 
     private void setupButtonInit(ItemDataSource dataSource) {
-        buttonInit.setOnClickListener(v -> {
-            populateDatabase(dataSource);
-        });
+        buttonInit.setOnClickListener(v -> populateDatabase(dataSource));
     }
 
     private void populateDatabase(ItemDataSource dataSource) {
@@ -152,7 +151,7 @@ public class ItemListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), "Clicked on " + currentSelection, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.toast_clicked_on) + currentSelection, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
             intent.putExtra("selectionName", currentSelection);
         }

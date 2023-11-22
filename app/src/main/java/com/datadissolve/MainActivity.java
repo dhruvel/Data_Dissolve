@@ -23,12 +23,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button login_btn = findViewById(R.id.loginButton);
-        login_btn.setOnClickListener(v -> launchDataSelectionActivity());
+        Button login_button = findViewById(R.id.loginButton);
+        login_button.setOnClickListener(v -> launchDataSelectionActivity());
 
         pinEntry = findViewById(R.id.pinEntry);
 
-        Button login_button = findViewById(R.id.loginButton);
         Button clear_button = findViewById(R.id.clear_button);
 
         login_button.setOnClickListener( v -> login_handler());
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         String correctPin = "1234";
 
         if(enteredPin.toString().equals(correctPin)) {
-            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, DataSanitizationSelectionActivity.class);
             startActivity(intent);
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else {
-            Toast.makeText(this, "Incorrect PIN, try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_incorrect_pin_try_again, Toast.LENGTH_SHORT).show();
             enteredPin.setLength(0);
             pinEntry.setText("");
         }
