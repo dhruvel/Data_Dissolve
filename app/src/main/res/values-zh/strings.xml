@@ -45,12 +45,17 @@
     <string name="chosse_a_model_below">选择下面的一个模型:</string>
     <string name="login_button">登录</string>
     <string name="clear_button">清除</string>
-    <string name="infoDialogInstructions">Step 1. Enter your pin to login into the App.\n
-        \nStep 2. Select the Algorithm that you want use to sanitize your data.\n
-        \nStep 3. The file selection menu will open select the file whose data\'s you want to sanitize.\n
-        \nStep 4. Confirm your choice and sanitize the file.\n
-        \nStep 5. Choose whether you want the file removed from your system.\n
-        \nYou now have peace of mind knowing that your data has been properly removed and protected from malicious entities\n
+    <string name="infoDialogInstructions">步骤1。输入您的密码登录到应用程序
+
+\ n步骤 2。选择要用于对数据进行清理的算法
+
+\ n步骤 3。文件选择菜单将打开，选择要对其数据进行清理的文件
+
+\ n步骤 4。确认您的选择并清理文件
+
+\ n步骤 5。选择是否要从系统中删除该文件
+
+您现在可以放心了，因为您的数据已被妥善删除，并受到恶意实体的保护
                                             </string>
     <string name="deleteFileButton">移除文件</string>
 
