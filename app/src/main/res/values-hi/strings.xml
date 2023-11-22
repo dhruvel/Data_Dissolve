@@ -44,7 +44,15 @@
     <string name="listContentTextView">टेक्स्ट व्यू</string>
     <string name="listContentImageViewDescription">यहां दबाएं डिलीट मेथड करने के लिए</string>
     <string name="chosse_a_model_below">कृपया नीचे दिए गए मॉडल में से एक चुनें</string>
-    <string name="login_button">Login</string>
-    <string name="clear_button">Clear</string>
+    <string name="login_button">लॉग इन करें</string>
+    <string name="clear_button">साफ़ करें</string>
+    <string name="infoDialogInstructions">चरण 1। अपना पिन दर्ज करें ताकि एप्लिकेशन में लॉगिन कर सकें। \n
+\nचरण 2। अपने डेटा को सैनिटाइज़ करने के लिए आप कौन सा एल्गोरिथम उपयोग करना चाहते हैं उसे चुनें। \n
+\nचरण 3। फ़ाइल चयन मेनू खुल जाएगा जिसमें आप उस फ़ाइल का चयन कर सकते हैं जिसके डेटा को आप सैनिटाइज़ करना चाहते हैं। \n
+\nचरण 4। अपनी पसंद को पुष्टि करें और फ़ाइल को सैनिटाइज़ करें। \n
+\nचरण 5। अपनी सिस्टम से फाइल को हटाना चाहते हैं या नहीं चुनें। \n
+\nआपके पास अब यह शांति है कि आपका डेटा ठीक से हटा दिया गया है और इसे दुर्भाग्यपूर्ण घटनाओं से सुरक्षित रखा गया है।
+                                            </string>
+    <string name="deleteFileButton">सिस्टम से फ़ाइल निकालें</string>
 
 </resources>

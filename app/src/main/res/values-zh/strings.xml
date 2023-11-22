@@ -45,5 +45,14 @@
     <string name="chosse_a_model_below">选择下面的一个模型:</string>
     <string name="login_button">登录</string>
     <string name="clear_button">清除</string>
+    <string name="infoDialogInstructions">Step 1. Enter your pin to login into the App.\n
+        \nStep 2. Select the Algorithm that you want use to sanitize your data.\n
+        \nStep 3. The file selection menu will open select the file whose data\'s you want to sanitize.\n
+        \nStep 4. Confirm your choice and sanitize the file.\n
+        \nStep 5. Choose whether you want the file removed from your system.\n
+        \nYou now have peace of mind knowing that your data has been properly removed and protected from malicious entities\n
+                                            </string>
+    <string name="deleteFileButton">移除文件</string>
+
 
 </resources>
