@@ -32,6 +32,7 @@
             android:background="@drawable/edit_shape"
             android:hint="please enter the Pin"
             android:textSize="24dp"
+            android:inputType="numberPassword"
             android:singleLine="true" />
 
 
