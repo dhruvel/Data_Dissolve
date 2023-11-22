@@ -53,5 +53,13 @@
         \nआपके पास अब यह शांति है कि आपका डेटा ठीक से हटा दिया गया है और इसे दुर्भाग्यपूर्ण घटनाओं से सुरक्षित रखा गया है।</string>
     <string name="login_button">लॉग इन करें</string>
     <string name="clear_button">साफ़ करें</string>
+    <string name="toast_selected_method">"चयनित विधि: "</string>
+    <string name="toast_dissolve_data_successfully">डेटा सफलतापूर्वक भंग</string>
+    <string name="toast_dissolve_data_failed">डेटा भंग विफल</string>
+    <string name="toast_success">सफलता</string>
+    <string name="toast_failed">विफल</string>
+    <string name="toast_clicked_on">"पर क्लिक किया "</string>
+    <string name="toast_login_successful">लॉगिन सफल</string>
+    <string name="toast_incorrect_pin_try_again">गलत पिन, कृपया पुनः प्रयास करें</string>
 
 </resources>

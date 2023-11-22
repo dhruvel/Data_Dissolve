@@ -27,6 +27,7 @@ import java.util.Random;
 
 /**
  * This activity is used to pick a document and dissolve.
+ * @noinspection ALL
  */
 public class DataDissolveActivity extends AppCompatActivity {
     private static final int PICK_FILE_REQUEST = 1;
@@ -47,19 +48,14 @@ public class DataDissolveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_disssolve);
 
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
-        Toast.makeText(this, "Selected method: " + selectedMethod, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
         progressText.setText(R.string.inProgressText);
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(v -> finish());
 
         deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
 
@@ -108,7 +104,7 @@ public class DataDissolveActivity extends AppCompatActivity {
             pfd.close();
             // Delete the file
 //          deleteFile(fileUri);
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -147,10 +143,10 @@ public class DataDissolveActivity extends AppCompatActivity {
 //            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
 //          deleteFile(fileUri);
 
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -186,10 +182,10 @@ public class DataDissolveActivity extends AppCompatActivity {
             // Delete the file
 //            deleteFile(fileUri);
 
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -225,10 +221,10 @@ public class DataDissolveActivity extends AppCompatActivity {
             // Delete the file
 //            deleteFile(fileUri);
 
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -301,12 +297,12 @@ public class DataDissolveActivity extends AppCompatActivity {
             successImage.setVisibility(View.VISIBLE);
             backBtn.setVisibility(View.VISIBLE);
             if ("Success".equals(result)) {
-                Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toast_success, Toast.LENGTH_SHORT).show();
                 progressText.setText(R.string.textDisplaySuccess);
                 successImage.setImageResource(R.drawable.ic_success);
             }
             else {
-                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show();
                 progressText.setText(R.string.textDisplayFailed);
                 successImage.setImageResource(R.drawable.task_error);
             }

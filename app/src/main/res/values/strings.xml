@@ -52,4 +52,12 @@
     <string name="choose_a_model_below">Chosse a model below:</string>
     <string name="login_button">Login</string>
     <string name="clear_button">Clear</string>
+    <string name="toast_selected_method">"Selected method: "</string>
+    <string name="toast_dissolve_data_successfully">Dissolve data successfully</string>
+    <string name="toast_dissolve_data_failed">Dissolve data failed</string>
+    <string name="toast_success">Success</string>
+    <string name="toast_failed">Failed</string>
+    <string name="toast_clicked_on">"Clicked on "</string>
+    <string name="toast_login_successful">Login Successful</string>
+    <string name="toast_incorrect_pin_try_again">Incorrect PIN, try again</string>
 </resources>
