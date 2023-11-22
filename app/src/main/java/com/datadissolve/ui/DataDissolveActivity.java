@@ -236,6 +236,7 @@ public class DataDissolveActivity extends AppCompatActivity {
         documentFile = DocumentFile.fromSingleUri(this, fileUri);
         if (documentFile != null) {
             documentFile.delete();
+            Toast.makeText(this, "Delete file successfully", Toast.LENGTH_SHORT).show();
         }
     }
 
