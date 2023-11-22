@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +37,10 @@ public class DataDissolveActivity extends AppCompatActivity {
     private TextView backBtn;
     private DocumentFile documentFile;
 
+    private Button deleteFileBtn;
+
+    private Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +53,16 @@ public class DataDissolveActivity extends AppCompatActivity {
         progressText.setText(R.string.inProgressText);
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
+        deleteFileBtn = findViewById(R.id.deleteFileButton);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
+
         requestDocument();
     }
 
@@ -70,7 +79,7 @@ public class DataDissolveActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_FILE_REQUEST && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
+            uri = data.getData();
             DissolveData(uri);
         }
     }

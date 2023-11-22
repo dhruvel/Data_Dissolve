@@ -26,6 +26,7 @@
     <string name="author_dhruv">Author: Dhruv Sagar</string>
     <string name="appInfoVersionNumber">"Version: "</string>
     <string name="textChooseAnotherFile">Choose another File</string>
+    <string name="deleteFileButton">Remove File from system</string>
     <string name="textSuccessImageDescription">Success indicator</string>
     <string name="infoMenuDescription">Info menu icon</string>
     <string name="infoDialogInstructionTitle">Instructions:</string>
@@ -41,15 +42,13 @@
     <string name="itemListRefreshButtonDescription">Press here to refresh the list</string>
     <string name="listContentTextView">TextView</string>
     <string name="listContentImageViewDescription">Press here to delete method</string>
-    <string name="lorem_ipsum2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus sed viverra tellus in hac. Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Sagittis id consectetur purus ut. Congue quisque egestas diam in. Quis lectus nulla at volutpat. Interdum posuere lorem ipsum dolor sit. Sem et tortor consequat id porta nibh venenatis cras. Ac tincidunt vitae semper quis lectus nulla at volutpat. Augue interdum velit euismod in pellentesque massa. Interdum velit laoreet id donec ultrices tincidunt arcu non. Elit duis tristique sollicitudin nibh sit amet commodo. Aliquam id diam maecenas ultricies mi. Ornare suspendisse sed nisi lacus sed viverra. Praesent semper feugiat nibh sed pulvinar proin gravida. Tincidunt vitae semper quis lectus. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Tortor at risus viverra adipiscing at in. Sapien pellentesque habitant morbi tristique senectus.
-
-Duis ut diam quam nulla. Diam donec adipiscing tristique risus nec feugiat in fermentum. Quisque non tellus orci ac auctor augue mauris augue. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Convallis tellus id interdum velit. Turpis massa sed elementum tempus egestas. Varius morbi enim nunc faucibus a. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Malesuada proin libero nunc consequat interdum varius sit amet. Nisl nisi scelerisque eu ultrices vitae auctor eu. Eget nulla facilisi etiam dignissim diam quis. Hac habitasse platea dictumst vestibulum rhoncus. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Dictum varius duis at consectetur lorem donec massa. Amet aliquam id diam maecenas ultricies mi. Proin nibh nisl condimentum id venenatis. Amet commodo nulla facilisi nullam vehicula ipsum a arcu cursus. In dictum non consectetur a erat nam at lectus. Viverra adipiscing at in tellus integer feugiat scelerisque varius.
-
-Rhoncus dolor purus non enim praesent elementum facilisis. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Orci porta non pulvinar neque laoreet. Neque egestas congue quisque egestas diam in. Dolor purus non enim praesent elementum facilisis leo vel fringilla. Scelerisque varius morbi enim nunc faucibus a. Orci dapibus ultrices in iaculis nunc sed augue lacus viverra. Purus sit amet luctus venenatis. Mattis rhoncus urna neque viverra justo nec ultrices dui sapien. Est velit egestas dui id ornare arcu odio ut sem. Tortor dignissim convallis aenean et tortor. Nunc aliquet bibendum enim facilisis. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Etiam sit amet nisl purus in mollis. Scelerisque varius morbi enim nunc faucibus a. Ultrices in iaculis nunc sed augue lacus viverra. Elit at imperdiet dui accumsan sit amet. Aliquam id diam maecenas ultricies mi eget mauris pharetra et.
-
-Aliquam malesuada bibendum arcu vitae. At varius vel pharetra vel turpis nunc eget lorem dolor. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Non odio euismod lacinia at. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Mi bibendum neque egestas congue quisque egestas diam in. Accumsan in nisl nisi scelerisque. Venenatis urna cursus eget nunc. Nibh praesent tristique magna sit amet purus gravida. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Facilisi nullam vehicula ipsum a. Tortor at auctor urna nunc id cursus metus.
-
-Consequat ac felis donec et odio pellentesque. Ut sem nulla pharetra diam sit. At auctor urna nunc id cursus. Tortor at auctor urna nunc id cursus metus aliquam eleifend. Massa enim nec dui nunc mattis enim. Morbi tristique senectus et netus et. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Non pulvinar neque laoreet suspendisse. Scelerisque mauris pellentesque pulvinar pellentesque. Cursus sit amet dictum sit amet justo donec. Integer feugiat scelerisque varius morbi enim. Risus sed vulputate odio ut enim blandit.</string>
+    <string name="infoDialogInstructions">Step 1. Enter your pin to login into the App.\n
+        \nStep 2. Select the Algorithm that you want use to sanitize your data.\n
+        \nStep 3. The file selection menu will open select the file whose data\'s you want to sanitize.\n
+        \nStep 4. Confirm your choice and sanitize the file.\n
+        \nStep 5. Choose whether you want the file removed from your system.\n
+        \nYou now have peace of mind knowing that your data has been properly removed and protected from malicious entities\n
+                                            </string>
     <string name="chosse_a_model_below">Chosse a model below:</string>
 
 </resources>
