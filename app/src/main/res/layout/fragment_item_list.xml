@@ -13,7 +13,7 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
-        android:text="@string/chosse_a_model_below"
+        android:text="@string/choose_a_model_below"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/data_dissolve_description_tv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingLeft="8dp"
             android:paddingTop="8dp"
             android:paddingRight="8dp"
@@ -85,7 +85,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
             android:layout_weight="1"
@@ -104,7 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/itemListStartOver"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                tools:ignore="InefficientWeight" />
 
             <ImageView
                 android:layout_width="wrap_content"
