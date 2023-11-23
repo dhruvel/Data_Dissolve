@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">डेटा भंग</string>
+    <string name="title_activity_data_dissolve">डेटाभंगएक्टिविटी</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">पहला फ्रेगमेंट</string>
+    <string name="second_fragment_label">दूसरा फ्रेगमेंट</string>
+    <string name="next">अगला</string>
+    <string name="previous">पिछला</string>
+
+    <string name="lorem_ipsum">लोरेम इप्सम डोलर सिट अमेत</string>
+    <string name="click_me_gutmann">मुझे दबाओ गुतमान</string>
+    <string name="click_me_default">मुझे दबाओ डिफॉल्ट</string>
+    <string name="click_me_dod">मुझे दबाओ डीओडी</string>
+    <string name="click_me_schneier">मुझे दबाओ श्नायर</string>
+    <string name="pick_file_default">फाइल डिफॉल्ट चुनें</string>
+    <string name="description_default">Default (डिफॉल्ट) विधि एक बुनियादी डेटा सैनिटाइजेशन तकनीक का उपयोग करके एक फ़ाइल की सामग्री को रैंडम जनरेट किए गए डेटा के साथ ओवरराइट करता है। यह एक रैंडम बाइट एरे जनरेट करता है और इसे एक लूप में फ़ाइल में लिखता है जब तक कि पूरी फ़ाइल भर जाए। जबकि यह विधि सुरक्षा के लिए रैंडमनेस को जोड़ती है, लेकिन यह गुतमान या डीओडी जैसी अधिक उन्नत एल्गोरिथ्म की तुलना में इतनी मजबूत नहीं हो सकती है। कृपया अपनी फाइल को अपूर्ण बनाने के लिए मानकीकृत सैनिटाइज़ेशन विधियों का उपयोग करन चाहते हैं तो कृपया किसी अन्य विधि का चयन करें।</string>
+    <string name="description_gutmann">Gutmann (गुतमान) विधि एक डेटा सैनिटाइज़ेशन एल्गोरिथ्म है जिसे पीटर गुतमान ने डिज़ाइन किया है। यह अपनी थोड़ी बहुतता के लिए जाना जाता है और एक निश्चित डेटा पैटर्न के साथ एक संग्रहीत माध्यम पर डेटा को बार-बार ओवरराइट करने का शामिल है। इस विधि में 35 पास शामिल हैं, प्रत्येक के साथ एक अद्वितीय पैटर्न, सुरक्षित और अपरिवर्तनीय डेटा नष्टि की गारंटी के लिए। यह शुरू में पुरानी तकनीकों के लिए विकसित किया गया था, लेकिन डेटा पुनर्प्राप्ति विधियों में सुधार के कारण आधुनिक संग्रहीत माध्यमों के लिए इसका लागू होना एक विषय है।</string>
+    <string name="description_dod">DoD (डीओडी) डेटा सैनिटाइज़ेशन विधि एक सुरक्षित डेटा इरेज़र के लिए अमेरिकी रक्षा मंत्रालय द्वारा परिभाषित एक सेट मानक है। डीओडी 5220.22-एम मानक, विशेष रूप से, डेटा को सैनिटाइज़ करने के लिए एक तीन-पास दृष्टिकोण प्रदान करता है। इस विधि में पहले पास में एक निश्चित पैटर्न के साथ संग्रहीत माध्यम को ओवरराइट करना शामिल है, दूसरे पास में उसका पूरक और तीसरे पास में एक रैंडम पैटर्न। यह विधि मूल रूप से हार्ड डिस्क ड्राइव के लिए डिज़ाइन किया गया था और सुरक्षित डेटा हटाने के लिए विभिन्न संदर्भों, जैसे सैन्य और सरकारी अनुप्रयोगों में आम तौर पर उपयोग किया जाता है।</string>
+    <string name="description_schneier">Schneier (श्नायर) विधि, ब्रूस श्नायर के नाम पर, गुतमान विधि की तुलना में एक सरल डेटा सैनिटाइज़ेशन दृष्टिकोण है। इसमें संग्रहीत माध्यम को एक एकल पैटर्न के साथ ओवरराइट किया जाता है, आमतौर पर शून्य। गुतमान विधि की तुलना में नहीं, श्नायर विधि आमतौर पर आम स्थितियों के लिए पर्याप्त माना जाता है और सुरक्षा और व्यावहारिकता के बीच एक अच्छा संतुलन प्रदान करता है।</string>
+    <string name="description_none">कृपया एक आइटम चुनियें</string>
+    <string name="title_activity_main2">मुख्य गतिविधि 2</string>
+    <string name="inProgressText" tools:ignore="TypographyEllipsis">प्रगति में...</string>
+    <string name="textDisplaySuccess">सफलता</string>
+    <string name="textDisplayFailed">विफल</string>
+    <string name="infoBarActivity">"गतिविधि: "</string>
+    <string name="author_dhruv">लेखक: ध्रुव सागर</string>
+    <string name="appInfoVersionNumber">"संस्करण: "</string>
+    <string name="textChooseAnotherFile">एक और फ़ाइल चुनें</string>
+    <string name="deleteFileButton">सिस्टम से फ़ाइल हटाएं</string>
+    <string name="textSuccessImageDescription">सफलता इंडिकेटर</string>
+    <string name="infoMenuDescription">जानकारी मेनू आइकन</string>
+    <string name="infoDialogInstructionTitle">अनुदेश:</string>
+    <string name="infoDialogCloseButtonText">बंद करे</string>
+    <string name="infoDialogAppInfoTitle">ऐप जानकारी</string>
+    <string name="infoDialogAuthorNameDhruv">लेखक: ध्रुव सागर</string>
+    <string name="firstFragmentText">कृपया अगला बटन दबाएं</string>
+    <string name="secondFragmentText">कृपया पिछला बटन दबाएं</string>
+    <string name="itemListInitialDescription">कृपया एक आइटम का चयन करें</string>
+    <string name="itemListSelectItemToPerformDD">डेटा भंग करने के लिए एक आइटम का चयन करें</string>
+    <string name="itemListIconDescription">जारी रखने के लिए यहां दबाएं</string>
+    <string name="itemListStartOver">फिर से शुरू करें</string>
+    <string name="itemListRefreshButtonDescription">सूची को रिफ़्रेश करने के लिए यहां दबाएं</string>
+    <string name="listContentTextView">टेक्स्ट व्यू</string>
+    <string name="listContentImageViewDescription">यहां दबाएं डिलीट मेथड करने के लिए</string>
+    <string name="choose_a_model_below">कृपया नीचे दिए गए मॉडल में से एक चुनें</string>
+    <string name="infoDialogInstructions">चरण 1। अपना पिन दर्ज करें ताकि एप्लिकेशन में लॉगिन कर सकें। \n
+        \nचरण 2। अपने डेटा को सैनिटाइज़ करने के लिए आप कौन सा एल्गोरिथम उपयोग करना चाहते हैं उसे चुनें। \n
+        \nचरण 3। फ़ाइल चयन मेनू खुल जाएगा जिसमें आप उस फ़ाइल का चयन कर सकते हैं जिसके डेटा को आप सैनिटाइज़ करना चाहते हैं। \n
+        \nचरण 4। अपनी पसंद को पुष्टि करें और फ़ाइल को सैनिटाइज़ करें। \n
+        \nचरण 5। अपनी सिस्टम से फाइल को हटाना चाहते हैं या नहीं चुनें। \n
+        \nआपके पास अब यह शांति है कि आपका डेटा ठीक से हटा दिया गया है और इसे दुर्भाग्यपूर्ण घटनाओं से सुरक्षित रखा गया है।</string>
+    <string name="login_button">लॉग इन करें</string>
+    <string name="clear_button">साफ़ करें</string>
+
+</resources>

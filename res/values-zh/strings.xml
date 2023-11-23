@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">数据消融者</string>
+    <string name="title_activity_data_dissolve">主程序</string>
+    <!-- 用于导航的片段的字符串 -->
+    <string name="first_fragment_label">第一片段</string>
+    <string name="second_fragment_label">第二片段</string>
+    <string name="next">下一步</string>
+    <string name="previous">上一步</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
+    <string name="click_me_gutmann">点击我使用Gutmann</string>
+    <string name="click_me_default">开始旅程</string>
+    <string name="click_me_dod">点击我使用DoD</string>
+    <string name="click_me_schneier">点击我使用Schneier</string>
+    <string name="pick_file_default">选择文件默认</string>
+    <string name="description_default">默认方法使用基本的数据清洗技术，通过随机生成的数据覆盖文件内容。它生成一个随机字节数组，并循环写入文件，直到整个文件被填满。尽管此方法为增强安全性引入了随机性，但可能不如Gutmann或DoD方法等更高级的算法健壮。如果您想使用标准化的清洗方法来使您的文件无法恢复，请选择其他方法。</string>
+    <string name="description_gutmann">Gutmann方法是由Peter Gutmann设计的数据清洗算法。它以彻底性而闻名，并涉及多次用特定数据模式覆盖存储介质上的数据。该方法包括35个步骤，每个步骤都有唯一的模式，以确保安全且不可逆的数据销毁。尽管它最初是为旧技术开发的，但由于数据恢复方法的进步，它适用于现代存储介质还是一个有争议的话题。</string>
+    <string name="description_dod">DoD数据清洗方法是美国国防部定义的一套用于安全数据擦除的标准。特别是DoD 5220.22-M标准，概述了一种三步过程的清洗数据方法。该方法包括用特定模式覆盖存储介质的第一步，第二步是其补码，第三步是随机模式。这种方法最初是为硬盘驱动器设计的，并且在包括军事和政府应用在内的各种环境中常用于安全数据删除。</string>
+    <string name="description_schneier">Schneier方法是以Bruce Schneier的名字命名的，是一种相对于Gutmann方法来说更简单的数据清洗方式。它涉及用单一数据模式（通常是零）覆盖整个存储介质。尽管不如Gutmann方法全面，但Schneier方法被认为对于大多数常见场景来说已经足够，并在安全性和实用性之间提供了良好的平衡。</string>
+    <string name="description_none">请选择一个项目</string>
+    <string name="title_activity_main2">主程序</string>
+    <string name="inProgressText" tools:ignore="TypographyEllipsis">进行中...</string>
+    <string name="textDisplaySuccess">数据消融成功</string>
+    <string name="textDisplayFailed">数据消融失败</string>
+    <string name="infoBarActivity">"活动: "</string>
+    <string name="author_dhruv">作者: Dhruv Sagar</string>
+    <string name="appInfoVersionNumber">"版本: "</string>
+    <string name="textChooseAnotherFile">选择另一个文件</string>
+    <string name="textSuccessImageDescription">成功指示器</string>
+    <string name="infoMenuDescription">信息菜单图标</string>
+    <string name="infoDialogInstructionTitle">说明:</string>
+    <string name="infoDialogCloseButtonText">关闭</string>
+    <string name="infoDialogAppInfoTitle">应用信息</string>
+    <string name="infoDialogAuthorNameDhruv">作者: Dhruv Sagar</string>
+    <string name="firstFragmentText">请按下一步按钮</string>
+    <string name="secondFragmentText">请按上一步按钮</string>
+    <string name="itemListInitialDescription">请选择一个模型以继续</string>
+    <string name="itemListSelectItemToPerformDD">选择一个项目以执行数据消融</string>
+    <string name="itemListIconDescription">按这里继续</string>
+    <string name="itemListStartOver">重新开始</string>
+    <string name="itemListRefreshButtonDescription">按这里刷新列表</string>
+    <string name="listContentTextView">文本视图</string>
+    <string name="listContentImageViewDescription">按这里删除方法</string>
+    <string name="choose_a_model_below">选择下面的一个模型:</string>
+    <string name="login_button">登录</string>
+    <string name="clear_button">清除</string>
+    <string name="infoDialogInstructions">步骤1。输入您的密码登录到应用程序
+
+\ n步骤 2。选择要用于对数据进行清理的算法
+
+\ n步骤 3。文件选择菜单将打开，选择要对其数据进行清理的文件
+
+\ n步骤 4。确认您的选择并清理文件
+
+\ n步骤 5。选择是否要从系统中删除该文件
+
+您现在可以放心了，因为您的数据已被妥善删除，并受到恶意实体的保护
+                                            </string>
+    <string name="deleteFileButton">移除文件</string>
+
+
+</resources>
