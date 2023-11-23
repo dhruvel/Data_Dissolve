@@ -32,7 +32,9 @@ public class ItemListFragment extends Fragment {
     private List<String> selectionListFromDB;
     private LinearLayout buttonInit;
     private LinearLayout buttonPerformDD;
-    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider");
+
+    private LinearLayout buttonPerformCustomDD;
+    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider", "Custom");
     private ItemListAdapter adapter;
     private ItemDataSource dataSource;
     private TextView ddDescription;
@@ -54,6 +56,7 @@ public class ItemListFragment extends Fragment {
         selectionListFromDB = fetchItemsFromDatabase(dataSource);
         buttonInit = view.findViewById(R.id.button_init);
         buttonPerformDD = view.findViewById(R.id.perform_data_dissolve_ll);
+        buttonPerformCustomDD = view.findViewById(R.id.perform_data_dissolve_ll);
         adapter = new ItemListAdapter(selectionListFromDB);
         setupRecyclerView(view, adapter);
         setupButtonInit(dataSource);
@@ -66,6 +69,10 @@ public class ItemListFragment extends Fragment {
             Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
             intent.putExtra("selectedDataDissolveMethod", selectionListFromDB.get(0));
             startActivityForResult(intent, 1);
+        });
+
+        buttonPerformCustomDD.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
         });
     }
 
@@ -175,6 +182,9 @@ public class ItemListFragment extends Fragment {
                 ddDescription.setText(getString(R.string.description_schneier));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
+            case "Custom":
+                ddDescription.setText(getString(R.string.description_custom));
+                buttonPerformCustomDD.setVisibility((View.VISIBLE));
             default:
                 ddDescription.setText(getString(R.string.description_default));
                 buttonPerformDD.setVisibility(View.INVISIBLE);
