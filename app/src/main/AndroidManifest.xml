@@ -17,11 +17,6 @@
         android:theme="@style/Theme.Data_Dissolve"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Data_Dissolve" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -38,6 +33,11 @@
             android:exported="false"
             android:label="@string/title_activity_data_dissolve"
             android:theme="@style/Theme.Data_Dissolve" />
+
+        <activity
+            android:name=".ui.CustomDataSanitizationActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
