@@ -40,12 +40,22 @@
             android:name=".ui.DataDissolveActivity"
             android:exported="false"
             android:label="@string/title_activity_data_dissolve"
+<!-- <<<<<<< mark/CustomSelection -->
             android:parentActivityName=".ui.DataSanitizationSelectionActivity"
             android:theme="@style/Theme.Data_Dissolve" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.DataSanitizationSelectionActivity" />
         </activity>
+<!-- =======
+            android:theme="@style/Theme.Data_Dissolve" />
+
+        <activity
+            android:name=".ui.CustomDataSanitizationActivity"
+            android:exported="false"
+            />
+    </application> -->
+<!-- >>>>>>> dev/dhruv/custommethod -->
 
     </application>
 </manifest>

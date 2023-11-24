@@ -19,7 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="709dp"
+        android:layout_height="815dp"
         android:layout_weight="1"
         android:padding="5dp"
         android:background="#FFFFFF"/>
@@ -62,7 +62,7 @@
         android:paddingBottom="8dp"
         android:visibility="invisible"
         tools:visibility="visible"
-        android:background="@drawable/bottonlayout">
+        android:background="@drawable/bottom_layout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@drawable/bottonlayout">
+            android:background="@drawable/bottom_layout">
 
             <TextView
                 android:layout_width="76dp"
