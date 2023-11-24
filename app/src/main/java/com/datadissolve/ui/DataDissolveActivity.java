@@ -8,16 +8,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.documentfile.provider.DocumentFile;
 
-import com.datadissolve.util.DataSanitization;
 import com.datadissolve.R;
+import com.datadissolve.util.DataSanitization;
 import com.google.android.material.slider.Slider;
 
 import java.io.ByteArrayOutputStream;
@@ -38,7 +39,7 @@ public class DataDissolveActivity extends AppCompatActivity {
     private ImageView successImage;
     private TextView backBtn;
     private DocumentFile documentFile;
-    private Button deleteFileBtn;
+    private CheckBox deleteFileBtn;
     private Slider numPatternsSlider;
     private Slider numBitsSlider;
 
@@ -64,10 +65,16 @@ public class DataDissolveActivity extends AppCompatActivity {
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
-        backBtn.setOnClickListener(v -> finish());
 
-        deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
-
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(deleteFileBtn.isChecked()) {
+                    deleteFile(uri);
+                }
+                finish();
+            }
+        });
         requestDocument();
     }
 
@@ -239,8 +246,9 @@ public class DataDissolveActivity extends AppCompatActivity {
     }
 
     private void DissolveDataCustom(Uri fileUri) {
-        customNumPatterns = (int) numPatternsSlider.getValue();
-        customNumBits = (int) numBitsSlider.getValue();
+        customNumPatterns = getIntent().getIntExtra("customNumPaterns", 3);
+        customNumBits = getIntent().getIntExtra("customNumBits", 128);
+
         try {
             // Open the file for both reading and writing
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");

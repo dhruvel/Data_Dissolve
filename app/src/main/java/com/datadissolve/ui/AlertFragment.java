@@ -23,20 +23,21 @@ public class AlertFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        assert getArguments() != null;
         String warningType = getArguments().getString("warningParameter", "patterns");
-        String message;
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+                builder.setTitle(R.string.AlertTitle)
+                .setNeutralButton(R.string.continueButtonText, (dialog, which) -> dialog.dismiss());
 
         if(warningType.equals("patterns")) {
-            message = "@String/numPatternsAlert";
+            builder.setMessage(R.string.numPatternsAlert);
         }
         else {
-            message = "@String/numBitsAlert";
+            builder.setMessage(R.string.numBitsAlert);
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(message)
-                .setTitle(R.string.AlertTitle)
-                .setNeutralButton(R.string.continueButtonText, (dialog, which) -> dialog.dismiss());
 
         return builder.create();
     }

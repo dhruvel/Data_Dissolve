@@ -1,5 +1,6 @@
 package com.datadissolve.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,49 +15,67 @@ import com.google.android.material.slider.Slider;
 
 public class CustomDataSanitizationActivity extends AppCompatActivity {
 
-    private Slider numPatternSlider;
-    private Slider numBitsSlider;
+    private TextView numPatternSliderValueLabel;
+    private TextView numBitsSliderValueLabel;
 
-    private TextView numPatternSliderValue;
-    private TextView numBitsSliderValue;
+    private int numPatternSliderValue;
+    private int numBitsSliderValue;
 
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_data_sanitization);
 
-        numPatternSlider = findViewById(R.id.numPatternSlider);
-        numBitsSlider = findViewById(R.id.numBitsSlider);
+        final boolean[] patternWarningShown = {false};
+        final boolean[] bitsWarningShown = {false};
 
-        numPatternSliderValue = findViewById(R.id.numPatternSliderValue);
-        numBitsSliderValue = findViewById(R.id.numBitSliderValue);
+        Slider numPatternSlider = findViewById(R.id.numPatternSlider);
+        Slider numBitsSlider = findViewById(R.id.numBitsSlider);
+
+        numPatternSliderValueLabel = findViewById(R.id.numPatternSliderValue);
+        numBitsSliderValueLabel = findViewById(R.id.numBitSliderValue);
+
         Button continueButton = findViewById(R.id.continueButton);
 
         numPatternSlider.addOnChangeListener((slider, value, fromUser) -> {
-            numPatternSliderValue.setText((int) (slider.getValue()));
+            numPatternSliderValue = (int)value;
+            numPatternSliderValueLabel.setText(Float.toString(value));
 
-            if(slider.getValue() > 5) {
-                AlertFragment warningDialogPatterns = AlertFragment.newInstance("patterns");
-                warningDialogPatterns.show(getSupportFragmentManager(), "warning_dialog");
+            if(numPatternSliderValue > 5 && !patternWarningShown[0]) {
+                AlertFragment warningDialogBits = AlertFragment.newInstance("patterns");
+                warningDialogBits.show(getSupportFragmentManager(), "warning_dialog");
+                patternWarningShown[0] = true;
+            }
+            else if (numPatternSliderValue < 5) {
+                patternWarningShown[0] = false;
             }
         });
 
         numBitsSlider.addOnChangeListener((slider, value, fromUser) -> {
-            numBitsSliderValue.setText((int) (slider.getValue()));
+            numBitsSliderValueLabel.setText(Float.toString(value));
+            numBitsSliderValue = (int)value;
 
-            if(slider.getValue() > 256) {
-                AlertFragment warningDialogBits = AlertFragment.newInstance("bits");
-                warningDialogBits.show(getSupportFragmentManager(), "warning_dialog");
-            }
-        });
+           if(numBitsSliderValue > 256 && !bitsWarningShown[0]) {
+               AlertFragment warningDialogBits = AlertFragment.newInstance("bits");
+               warningDialogBits.show(getSupportFragmentManager(), "warning_dialog");
+               bitsWarningShown[0] = true;
+           }
+
+           else if (numBitsSliderValue  < 256) {
+               bitsWarningShown[0] = false;
+           }
+      });
+
         continueButton.setOnClickListener(v -> sendCustomParams());
     }
 
     private void sendCustomParams() {
         Intent intent = new Intent(this, DataDissolveActivity.class);
         intent.putExtra("selectedDataDissolveMethod", "Custom");
-        intent.putExtra("numPatterns", numPatternSlider.getValue());
-        intent.putExtra("numBits", numBitsSlider.getValue());
+        intent.putExtra("customNumPatterns", numPatternSliderValue);
+        intent.putExtra("customNumBits", numBitsSliderValue);
         startActivity(intent);
     }
 }

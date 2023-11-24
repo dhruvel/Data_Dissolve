@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:ignore="MissingConstraints" />
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -60,7 +61,7 @@
         app:layout_constraintVertical_bias="0.75"
         tools:visibility="visible" />
 
-    <Button
+    <CheckBox
         android:id="@+id/deleteFileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
