@@ -61,4 +61,9 @@
     <string name="toast_clicked_on">"Clicked on "</string>
     <string name="toast_login_successful">Login Successful</string>
     <string name="toast_incorrect_pin_try_again">Incorrect PIN, try again</string>
+
+
+    <string name="patternNumSliderLabel">Number of patterns</string>
+    <string name="bitNumSliderLabel">Number of bits</string>
+    <string name="continueButtonText">Continue</string>
 </resources>
