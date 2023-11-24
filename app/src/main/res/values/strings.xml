@@ -50,7 +50,7 @@
         \nStep 5. Choose whether you want the file removed from your system.\n
         \nYou now have peace of mind knowing that your data has been properly removed and protected from malicious entities\n
                                             </string>
-    <string name="choose_a_model_below">Chosse a model below:</string>
+    <string name="choose_a_model_below">Choose a model below:</string>
     <string name="login_button">Login</string>
     <string name="clear_button">Clear</string>
     <string name="toast_selected_method">"Selected method: "</string>
