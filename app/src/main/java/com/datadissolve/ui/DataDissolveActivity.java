@@ -40,6 +40,10 @@ public class DataDissolveActivity extends AppCompatActivity {
 
     private Button deleteFileBtn;
 
+
+    private int numPatterns;
+    private int numBits;
+
     private Uri uri;
 
     @Override
@@ -49,6 +53,11 @@ public class DataDissolveActivity extends AppCompatActivity {
 
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
+
+        if(selectedMethod.equals("Custom")) {
+             numPatterns = getIntent().getIntExtra("numPatterns", 3);
+             numBits = getIntent().getIntExtra("numBits", 128);
+        }
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
         progressText.setText(R.string.inProgressText);
@@ -225,6 +234,38 @@ public class DataDissolveActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void DataDissolveCustom(Uri fileUri) {
+        try {
+            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri,"rw");
+            assert pfd != null;
+
+            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            int bytesRead;
+            byte[] buffer = new byte[1024];
+
+            while((bytesRead = fileInputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, bytesRead);
+            }
+
+            byte[] data = byteArrayOutputStream.toByteArray();
+            //DataSanitization.wipeDataCustom(data, numPatterns, numBits);
+
+            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
+            fileOutputStream.write(data);
+
+            fileInputStream.close();
+            fileOutputStream.close();
+            pfd.close();
+
+            //TODO make toast
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            //TODO make toast
         }
     }
 
