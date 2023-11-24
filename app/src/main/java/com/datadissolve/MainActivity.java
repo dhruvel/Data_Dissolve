@@ -23,21 +23,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button login_btn = findViewById(R.id.loginButton);
-        login_btn.setOnClickListener(v -> launchDataSelectionActivity());
+        Button login_button = findViewById(R.id.loginButton);
 
         pinEntry = findViewById(R.id.pinEntry);
 
-        Button login_button = findViewById(R.id.loginButton);
         Button clear_button = findViewById(R.id.clear_button);
 
         login_button.setOnClickListener( v -> login_handler());
         clear_button.setOnClickListener(v -> clear_button_handler());
-    }
-
-    private void launchDataSelectionActivity() {
-        android.content.Intent intent = new android.content.Intent(this, DataSanitizationSelectionActivity.class);
-        startActivity(intent);
     }
 
     public void onNumericButtonClick(View view) {
@@ -52,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login_handler() {
-        String correctPin = "1234";
+        String correctPin = ""; //TODO: Add correct pin here
 
         if(enteredPin.toString().equals(correctPin)) {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();

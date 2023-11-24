@@ -9,7 +9,6 @@
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="click_me_gutmann">Click Me Gutmann</string>
-    <string name="click_me_default">Click Me to Start The Journey</string>
     <string name="click_me_dod">Click Me DoD</string>
     <string name="click_me_schneier">Click Me Schneier</string>
     <string name="pick_file_default">Pick File Default</string>
@@ -36,7 +35,7 @@
     <string name="infoDialogAuthorNameDhruv">Author: Dhruv Sagar</string>
     <string name="firstFragmentText">Please Press Next Button</string>
     <string name="secondFragmentText">Please Press Previous Button</string>
-    <string name="itemListInitialDescription">Please select an model for cotinue</string>
+    <string name="itemListInitialDescription">Please select a model above after initializing</string>
     <string name="itemListSelectItemToPerformDD">Select an item to perform data dissolve</string>
     <string name="itemListIconDescription">Press here to continue</string>
     <string name="itemListStartOver">Initialize</string>
@@ -61,7 +60,6 @@
     <string name="toast_clicked_on">"Clicked on "</string>
     <string name="toast_login_successful">Login Successful</string>
     <string name="toast_incorrect_pin_try_again">Incorrect PIN, try again</string>
-
 
     <string name="patternNumSliderLabel">Number of patterns</string>
     <string name="bitNumSliderLabel">Number of bits</string>

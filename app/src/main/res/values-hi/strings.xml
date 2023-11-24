@@ -11,7 +11,6 @@
 
     <string name="lorem_ipsum">लोरेम इप्सम डोलर सिट अमेत</string>
     <string name="click_me_gutmann">मुझे दबाओ गुतमान</string>
-    <string name="click_me_default">मुझे दबाओ डिफॉल्ट</string>
     <string name="click_me_dod">मुझे दबाओ डीओडी</string>
     <string name="click_me_schneier">मुझे दबाओ श्नायर</string>
     <string name="pick_file_default">फाइल डिफॉल्ट चुनें</string>
@@ -38,7 +37,7 @@
     <string name="infoDialogAuthorNameDhruv">लेखक: ध्रुव सागर</string>
     <string name="firstFragmentText">कृपया अगला बटन दबाएं</string>
     <string name="secondFragmentText">कृपया पिछला बटन दबाएं</string>
-    <string name="itemListInitialDescription">कृपया एक आइटम का चयन करें</string>
+    <string name="itemListInitialDescription">कृपया शुरू करने के लिए ऊपर दिए गए मॉडल में से एक चुनें</string>
     <string name="itemListSelectItemToPerformDD">डेटा भंग करने के लिए एक आइटम का चयन करें</string>
     <string name="itemListIconDescription">जारी रखने के लिए यहां दबाएं</string>
     <string name="itemListStartOver">फिर से शुरू करें</string>
@@ -62,5 +61,13 @@
     <string name="toast_clicked_on">"पर क्लिक किया "</string>
     <string name="toast_login_successful">लॉगिन सफल</string>
     <string name="toast_incorrect_pin_try_again">गलत पिन, कृपया पुनः प्रयास करें</string>
+
+    <string name="patternNumSliderLabel">पैटर्न की संख्या</string>
+    <string name="bitNumSliderLabel">बिट्स की संख्या</string>
+    <string name="continueButtonText">जारी रखें</string>
+
+    <string name="AlertTitle">चेतावनी</string>
+    <string name="numPatternsAlert">5 से अधिक पैटर्न की संख्या बढ़ाने से कस्टम एल्गोरिदम को काफी धीमा कर देगा</string>
+    <string name="numBitsAlert">256 से अधिक बिट्स की संख्या बढ़ाने से कस्टम एल्गोरिदम को काफी धीमा कर देगा</string>
 
 </resources>

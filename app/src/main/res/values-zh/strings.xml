@@ -10,7 +10,6 @@
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="click_me_gutmann">点击我使用Gutmann</string>
-    <string name="click_me_default">开始旅程</string>
     <string name="click_me_dod">点击我使用DoD</string>
     <string name="click_me_schneier">点击我使用Schneier</string>
     <string name="pick_file_default">选择文件默认</string>
@@ -36,7 +35,7 @@
     <string name="infoDialogAuthorNameDhruv">作者: Dhruv Sagar</string>
     <string name="firstFragmentText">请按下一步按钮</string>
     <string name="secondFragmentText">请按上一步按钮</string>
-    <string name="itemListInitialDescription">请选择一个模型以继续</string>
+    <string name="itemListInitialDescription">请选择上面给出的模型之一开始</string>
     <string name="itemListSelectItemToPerformDD">选择一个项目以执行数据消融</string>
     <string name="itemListIconDescription">按这里继续</string>
     <string name="itemListStartOver">重新开始</string>
@@ -67,5 +66,14 @@
     <string name="toast_clicked_on">"点击了 "</string>
     <string name="toast_login_successful">登录成功</string>
     <string name="toast_incorrect_pin_try_again">密码错误，请重试</string>
+
+    <string name="patternNumSliderLabel">模式数量</string>
+    <string name="bitNumSliderLabel">位数</string>
+    <string name="continueButtonText">继续</string>
+
+    <string name="AlertTitle">警告</string>
+    <string name="numPatternsAlert">增加的模式数量不能超过35</string>
+    <string name="numBitsAlert">位数必须大于1且小于100</string>
+
 
 </resources>

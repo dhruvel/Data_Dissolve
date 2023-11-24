@@ -18,28 +18,29 @@ import androidx.documentfile.provider.DocumentFile;
 
 import com.datadissolve.util.DataSanitization;
 import com.datadissolve.R;
+import com.google.android.material.slider.Slider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+
 /**
  * This activity is used to pick a document and dissolve.
  * @noinspection ALL
  */
 public class DataDissolveActivity extends AppCompatActivity {
     private static final int PICK_FILE_REQUEST = 1;
-    private String selectedMethod = "Default";
+    private String selectedMethod;
     private ProgressBar progressBar;
     private TextView progressText;
     private ImageView successImage;
     private TextView backBtn;
     private DocumentFile documentFile;
-
     private Button deleteFileBtn;
+    private Slider numPatternsSlider;
+    private Slider numBitsSlider;
 
     private int customNumPatterns;
     private int customNumBits;
@@ -53,36 +54,30 @@ public class DataDissolveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_disssolve);
 
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
-
-        if(selectedMethod.equals("custom")) {
-            customNumPatterns = getIntent().getIntExtra("numPatterns", 3);
-            customNumBits = getIntent().getIntExtra("numBits", 128);
-        }
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
+
+        numPatternsSlider = findViewById(R.id.numPatternSlider);
+        numBitsSlider = findViewById(R.id.numBitsSlider);
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
         progressText.setText(R.string.inProgressText);
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // Enable the Up button
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backBtn.setOnClickListener(v -> finish());
 
         deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
 
         requestDocument();
+    }
+
+    private void handleCustomMethod() {
+        Intent customIntent = new Intent(this, CustomDataSanitizationActivity.class);
+        startActivity(customIntent);
+        numPatternsSlider = findViewById(R.id.numPatternSlider);
+        numBitsSlider = findViewById(R.id.numBitsSlider);
+        finish();
+        return;
     }
 
     private void requestDocument() {
@@ -125,8 +120,7 @@ public class DataDissolveActivity extends AppCompatActivity {
             }
             outputStream.close();
             pfd.close();
-            // Delete the file
-//          deleteFile(fileUri);
+
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -162,14 +156,10 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//          deleteFile(fileUri);
-
-            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -241,9 +231,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
-
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -252,6 +239,8 @@ public class DataDissolveActivity extends AppCompatActivity {
     }
 
     private void DissolveDataCustom(Uri fileUri) {
+        customNumPatterns = (int) numPatternsSlider.getValue();
+        customNumBits = (int) numBitsSlider.getValue();
         try {
             // Open the file for both reading and writing
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
@@ -338,6 +327,9 @@ public class DataDissolveActivity extends AppCompatActivity {
                             break;
                         case "Schneier":
                             DissolveSchneier(uri);
+                            break;
+                        case "Custom":
+                            DissolveDataCustom(uri);
                             break;
                         default:
                             DataDissolveDefault(uri);
