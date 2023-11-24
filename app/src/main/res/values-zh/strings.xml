@@ -18,6 +18,7 @@
     <string name="description_gutmann">Gutmann方法是由Peter Gutmann设计的数据清洗算法。它以彻底性而闻名，并涉及多次用特定数据模式覆盖存储介质上的数据。该方法包括35个步骤，每个步骤都有唯一的模式，以确保安全且不可逆的数据销毁。尽管它最初是为旧技术开发的，但由于数据恢复方法的进步，它适用于现代存储介质还是一个有争议的话题。</string>
     <string name="description_dod">DoD数据清洗方法是美国国防部定义的一套用于安全数据擦除的标准。特别是DoD 5220.22-M标准，概述了一种三步过程的清洗数据方法。该方法包括用特定模式覆盖存储介质的第一步，第二步是其补码，第三步是随机模式。这种方法最初是为硬盘驱动器设计的，并且在包括军事和政府应用在内的各种环境中常用于安全数据删除。</string>
     <string name="description_schneier">Schneier方法是以Bruce Schneier的名字命名的，是一种相对于Gutmann方法来说更简单的数据清洗方式。它涉及用单一数据模式（通常是零）覆盖整个存储介质。尽管不如Gutmann方法全面，但Schneier方法被认为对于大多数常见场景来说已经足够，并在安全性和实用性之间提供了良好的平衡。</string>
+    <string name="description_custom">Custom自定义方法允许您定义自己的数据清洗算法。您可以指定要写入文件的通道数和数据模式。如果您想使用不在其他方法中的特定清洗技术，这种方法很有用。但是，如果您对自定义方法感到不确定，建议您使用标准化方法之一。</string>
     <string name="description_none">请选择一个项目</string>
     <string name="title_activity_main2">主程序</string>
     <string name="inProgressText" tools:ignore="TypographyEllipsis">进行中...</string>

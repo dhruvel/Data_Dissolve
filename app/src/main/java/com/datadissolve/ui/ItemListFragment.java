@@ -32,7 +32,7 @@ public class ItemListFragment extends Fragment {
     private List<String> selectionListFromDB;
     private LinearLayout buttonInit;
     private LinearLayout buttonPerformDD;
-    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider");
+    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider", "Custom");
     private ItemListAdapter adapter;
     private ItemDataSource dataSource;
     private TextView ddDescription;

@@ -37,10 +37,10 @@ public class DataDissolveActivity extends AppCompatActivity {
     private ImageView successImage;
     private TextView backBtn;
     private DocumentFile documentFile;
-
     private Button deleteFileBtn;
-
     private Uri uri;
+    private int customPatternSize = 1;     // TODO: replace with user input
+    private int customNumOfPatterns = 1;    // TODO: replace with user input
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +102,7 @@ public class DataDissolveActivity extends AppCompatActivity {
             }
             outputStream.close();
             pfd.close();
-            // Delete the file
-//          deleteFile(fileUri);
+
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,10 +137,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileInputStream.close();
             fileOutputStream.close();
             pfd.close();
-
-            // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//          deleteFile(fileUri);
 
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -179,9 +174,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
-
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -218,8 +210,41 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void DissolveDataCustom(Uri fileUri, int numOfPatterns, int patternSize) {
+        try {
+            // Open the file for both reading and writing
+            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
+            assert pfd != null;
+
+            // Read the data from the file into a byte array
+            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            int bytesRead;
+            byte[] buffer = new byte[1024];
+
+            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, bytesRead);
+            }
+
+            // Apply Custom method to the data
+            byte[] data = byteArrayOutputStream.toByteArray();
+            DataSanitization.wipeDataCustom(data, numOfPatterns, patternSize);
+
+            // Write the modified data back to the file
+            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
+            fileOutputStream.write(data);
+
+            // Close the streams and file descriptor
+            fileInputStream.close();
+            fileOutputStream.close();
+            pfd.close();
 
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -276,6 +301,9 @@ public class DataDissolveActivity extends AppCompatActivity {
                             break;
                         case "Schneier":
                             DissolveSchneier(uri);
+                            break;
+                        case "Custom":
+                            DissolveDataCustom(uri, customNumOfPatterns, customPatternSize);
                             break;
                         default:
                             DataDissolveDefault(uri);
