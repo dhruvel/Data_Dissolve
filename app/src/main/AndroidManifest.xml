@@ -28,11 +28,17 @@
         <activity
             android:name=".ui.DataSanitizationSelectionActivity"
             android:parentActivityName=".MainActivity"
-            android:exported="False"/>
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.CustomDataSanitizationActivity"
+            android:parentActivityName=".ui.DataSanitizationSelectionActivity"
+            android:exported="false"/>
+
 
         <activity
             android:name=".ui.DataDissolveActivity"
-            android:exported="False"
+            android:exported="false"
             android:label="@string/title_activity_data_dissolve"
             android:parentActivityName=".ui.DataSanitizationSelectionActivity"
             android:theme="@style/Theme.Data_Dissolve" >

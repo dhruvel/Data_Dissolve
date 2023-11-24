@@ -66,4 +66,9 @@
     <string name="patternNumSliderLabel">Number of patterns</string>
     <string name="bitNumSliderLabel">Number of bits</string>
     <string name="continueButtonText">Continue</string>
+
+    <string name="AlertTitle">Warning</string>
+    <string name="numPatternsAlert">Increasing the number of patterns past 5 will slow down the custom algorithm significantly</string>
+    <string name="numBitsAlert">Increasing the number of bits past 256 will slow down the custom algorithm significantly</string>
+
 </resources>

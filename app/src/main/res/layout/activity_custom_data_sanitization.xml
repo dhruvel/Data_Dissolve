@@ -12,7 +12,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginBottom="32dp"
         android:text="@string/patternNumSliderLabel"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/numBitsSlider"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -35,7 +35,8 @@
         android:layout_marginTop="16dp"
         android:text="3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numBitsSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/numBitsSlider"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +67,8 @@
         android:layout_marginTop="28dp"
         android:text="128"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numPatternSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/numPatternSlider"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/continueButton"
