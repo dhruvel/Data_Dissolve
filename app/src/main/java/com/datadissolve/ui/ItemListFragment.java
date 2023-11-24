@@ -36,6 +36,8 @@ public class ItemListFragment extends Fragment {
     private ItemListAdapter adapter;
     private ItemDataSource dataSource;
     private TextView ddDescription;
+    private String selectedItem;
+
     public ItemListFragment() {}
 
     private List<String> fetchItemsFromDatabase(ItemDataSource dataSource) {
@@ -52,6 +54,9 @@ public class ItemListFragment extends Fragment {
         dataSource = new ItemDataSource(requireActivity());
         ddDescription = view.findViewById(R.id.data_dissolve_description_tv);
         selectionListFromDB = fetchItemsFromDatabase(dataSource);
+        if(selectionListFromDB.size() > 0) {
+            selectedItem = selectionListFromDB.get(0);
+        }
         buttonInit = view.findViewById(R.id.button_init);
         buttonPerformDD = view.findViewById(R.id.perform_data_dissolve_ll);
         adapter = new ItemListAdapter(selectionListFromDB);
@@ -63,14 +68,13 @@ public class ItemListFragment extends Fragment {
 
     private void setupButtonPerformDD() {
         buttonPerformDD.setOnClickListener(v -> {
-            String currentSelection = selectionListFromDB.get(0);
-            if ("Custom".equals(currentSelection)) {
+            if ("Custom".equals(selectedItem)) {
                 Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
-                customIntent.putExtra("selectedDataDissolveMethod", currentSelection);
+                customIntent.putExtra("selectedDataDissolveMethod", selectedItem);
                 startActivityForResult(customIntent, 1);
             } else {
                 Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
-                intent.putExtra("selectedDataDissolveMethod", currentSelection);
+                intent.putExtra("selectedDataDissolveMethod", selectedItem);
                 startActivity(intent);
             }
         });
@@ -199,6 +203,7 @@ public class ItemListFragment extends Fragment {
                 buttonPerformDD.setVisibility(View.INVISIBLE);
                 break;
         }
+        selectedItem = currentSelection;
     }
 
     private void launchDataDissolveActivity(String currentSelection) {

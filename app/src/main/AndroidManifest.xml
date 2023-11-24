@@ -42,7 +42,7 @@
             android:label="@string/title_activity_data_dissolve"
             android:parentActivityName=".ui.DataSanitizationSelectionActivity"
             android:theme="@style/Theme.Data_Dissolve" >
-            <!-- <<<<<<< mark/CustomSelection -->
+            <!-- <<<<<<< mark/CustomSelection 2 lines above this comment -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.DataSanitizationSelectionActivity" />
