@@ -24,7 +24,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
-
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 /**
  * This activity is used to pick a document and dissolve.
  */
@@ -54,6 +55,14 @@ public class DataDissolveActivity extends AppCompatActivity {
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable the Up button
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
