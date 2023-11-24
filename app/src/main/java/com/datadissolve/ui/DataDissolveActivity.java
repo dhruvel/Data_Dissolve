@@ -40,6 +40,10 @@ public class DataDissolveActivity extends AppCompatActivity {
 
     private Button deleteFileBtn;
 
+    private int customNumPatterns;
+    private int customNumBits;
+
+
     private Uri uri;
 
     @Override
@@ -48,6 +52,11 @@ public class DataDissolveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_disssolve);
 
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
+
+        if(selectedMethod.equals("custom")) {
+            customNumPatterns = getIntent().getIntExtra("numPatterns", 3);
+            customNumBits = getIntent().getIntExtra("numBits", 128);
+        }
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
@@ -208,6 +217,45 @@ public class DataDissolveActivity extends AppCompatActivity {
             // Apply Schneier method to the data
             byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataSchneier(data);
+
+            // Write the modified data back to the file
+            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
+            fileOutputStream.write(data);
+
+            // Close the streams and file descriptor
+            fileInputStream.close();
+            fileOutputStream.close();
+            pfd.close();
+
+            // Delete the file
+//            deleteFile(fileUri);
+
+            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void DissolveDataCustom(Uri fileUri) {
+        try {
+            // Open the file for both reading and writing
+            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
+            assert pfd != null;
+
+            // Read the data from the file into a byte array
+            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            int bytesRead;
+            byte[] buffer = new byte[1024];
+
+            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, bytesRead);
+            }
+
+            // Apply DoD method to the data
+            byte[] data = byteArrayOutputStream.toByteArray();
+            DataSanitization.wipeDataCustom(data, customNumPatterns, customNumBits);
 
             // Write the modified data back to the file
             FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
