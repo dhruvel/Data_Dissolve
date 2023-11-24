@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/itemListFragment">
+
+    <activity
+        android:id="@+id/dataDissolveActivity"
+        android:name="com.datadissolve.ui.DataDissolveActivity"
+        android:label="activity_data_disssolve"
+        tools:layout="@layout/activity_data_disssolve" />
+    <activity
+        android:id="@+id/dataSanitizationSelectionActivity"
+        android:name="com.datadissolve.ui.DataSanitizationSelectionActivity"
+        android:label="DataSanitizationSelectionActivity" />
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.datadissolve.ui.ItemListFragment"
+        android:label="ItemListFragment" >
+        <action
+            android:id="@+id/action_itemListFragment_to_dataDissolveActivity"
+            app:destination="@id/dataDissolveActivity" />
+        <action
+            android:id="@+id/action_itemListFragment_to_dataSanitizationSelectionActivity"
+            app:destination="@id/dataSanitizationSelectionActivity" />
+    </fragment>
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/mainActivity">
+        <activity
+            android:id="@+id/mainActivity"
+            android:name="com.datadissolve.MainActivity"
+            android:label="activity_main"
+            tools:layout="@layout/activity_main" />
+        <action
+            android:id="@+id/action_global_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </navigation>
+</navigation>

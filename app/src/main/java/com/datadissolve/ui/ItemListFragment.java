@@ -70,10 +70,6 @@ public class ItemListFragment extends Fragment {
             intent.putExtra("selectedDataDissolveMethod", selectionListFromDB.get(0));
             startActivityForResult(intent, 1);
         });
-
-        buttonPerformCustomDD.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
-        });
     }
 
     private void setupRecyclerView(View view, ItemListAdapter adapter) {
