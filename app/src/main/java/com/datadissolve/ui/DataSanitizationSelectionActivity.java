@@ -7,6 +7,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.datadissolve.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
+import android.view.MenuItem;
+
 
 /**
  * This activity is the main activity for the app. It is responsible for loading the fragment
@@ -20,6 +27,14 @@ public class DataSanitizationSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
         fab = findViewById(R.id.fab);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        NavigationUI.setupActionBarWithNavController(this, navController);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         setupFab();
         if (savedInstanceState == null) {
             loadFragment();
@@ -56,4 +71,5 @@ public class DataSanitizationSelectionActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, new ItemListFragment(), "ItemListFragment")
                 .commitAllowingStateLoss();
     }
+
 }

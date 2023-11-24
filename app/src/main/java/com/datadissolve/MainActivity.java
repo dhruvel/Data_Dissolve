@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, DataSanitizationSelectionActivity.class);
             startActivity(intent);
-            finish();
         }
 
         else {

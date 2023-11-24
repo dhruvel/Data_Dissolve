@@ -24,7 +24,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
-
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 /**
  * This activity is used to pick a document and dissolve.
  * @noinspection ALL
@@ -64,7 +65,20 @@ public class DataDissolveActivity extends AppCompatActivity {
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
-        backBtn.setOnClickListener(v -> finish());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable the Up button
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
 
@@ -152,10 +166,10 @@ public class DataDissolveActivity extends AppCompatActivity {
 //            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
 //          deleteFile(fileUri);
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Dissolve data successfully", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Dissolve data failed", Toast.LENGTH_SHORT).show();
         }
     }
 
