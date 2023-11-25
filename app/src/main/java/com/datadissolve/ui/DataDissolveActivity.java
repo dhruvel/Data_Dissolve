@@ -42,9 +42,8 @@ public class DataDissolveActivity extends AppCompatActivity {
     private CheckBox deleteFileBtn;
     private Slider numPatternsSlider;
     private Slider numBitsSlider;
-
-    private int customNumPatterns;
-    private int customNumBits;
+    private Integer customNumPatterns;
+    private Integer customNumBits;
 
 
     private Uri uri;
@@ -199,9 +198,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
-
             Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -246,8 +242,11 @@ public class DataDissolveActivity extends AppCompatActivity {
     }
 
     private void DissolveDataCustom(Uri fileUri) {
-        customNumPatterns = getIntent().getIntExtra("customNumPaterns", 3);
-        customNumBits = getIntent().getIntExtra("customNumBits", 128);
+        customNumPatterns = (int)numPatternsSlider.getValue();
+        customNumBits = (int)numBitsSlider.getValue();
+//
+//        customNumPatterns = ;
+//        customNumBits = ;
 
         try {
             // Open the file for both reading and writing
@@ -280,10 +279,10 @@ public class DataDissolveActivity extends AppCompatActivity {
             // Delete the file
 //            deleteFile(fileUri);
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -359,12 +358,21 @@ public class DataDissolveActivity extends AppCompatActivity {
             successImage.setVisibility(View.VISIBLE);
             backBtn.setVisibility(View.VISIBLE);
             if ("Success".equals(result)) {
-                Toast.makeText(context, R.string.toast_success, Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, R.string.toast_success, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 progressText.setText(R.string.textDisplaySuccess);
                 successImage.setImageResource(R.drawable.ic_success);
-            }
-            else {
-                Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show();
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 progressText.setText(R.string.textDisplayFailed);
                 successImage.setImageResource(R.drawable.task_error);
             }

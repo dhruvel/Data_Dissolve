@@ -34,6 +34,7 @@
         android:stepSize="1"
         android:valueFrom="3"
         android:valueTo="10"
+        android:value="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:thumbColor="?attr/colorPrimary" />
@@ -68,6 +69,7 @@
         android:stepSize="1"
         android:valueFrom="128"
         android:valueTo="1024"
+        android:value="128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:thumbColor="?attr/colorPrimary" />
