@@ -33,7 +33,12 @@
         <activity
             android:name=".ui.CustomDataSanitizationActivity"
             android:parentActivityName=".ui.DataSanitizationSelectionActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.Data_Dissolve" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.DataSanitizationSelectionActivity" />
+        </activity>
 
 
         <activity

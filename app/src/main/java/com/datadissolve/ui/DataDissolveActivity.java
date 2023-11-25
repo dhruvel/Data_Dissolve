@@ -14,7 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.documentfile.provider.DocumentFile;
 
 import com.datadissolve.R;
@@ -26,6 +28,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
 
 /**
  * This activity is used to pick a document and dissolve.
@@ -64,6 +68,15 @@ public class DataDissolveActivity extends AppCompatActivity {
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable the Up button
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

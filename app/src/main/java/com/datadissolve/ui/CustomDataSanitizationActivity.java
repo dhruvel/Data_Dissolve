@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.datadissolve.R;
 import com.google.android.material.slider.Slider;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
 
 
 
@@ -38,6 +40,14 @@ public class CustomDataSanitizationActivity extends AppCompatActivity {
         numBitsSliderValueLabel = findViewById(R.id.numBitSliderValue);
 
         Button continueButton = findViewById(R.id.continueButton);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable the Up button
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         numPatternSlider.addOnChangeListener((slider, value, fromUser) -> {
             numPatternSliderValue = (int)value;
