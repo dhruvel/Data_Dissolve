@@ -127,7 +127,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             outputStream.close();
             pfd.close();
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,10 +161,8 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -198,10 +195,8 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -234,19 +229,14 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void DissolveDataCustom(Uri fileUri) {
         customNumPatterns = (int)numPatternsSlider.getValue();
         customNumBits = (int)numBitsSlider.getValue();
-//
-//        customNumPatterns = ;
-//        customNumBits = ;
 
         try {
             // Open the file for both reading and writing
@@ -276,10 +266,6 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
-
-//            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
 //            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
