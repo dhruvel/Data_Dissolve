@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -28,8 +29,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
-import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.app.ActionBar;
 
 /**
  * This activity is used to pick a document and dissolve.
@@ -60,8 +59,13 @@ public class DataDissolveActivity extends AppCompatActivity {
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
 
-        numPatternsSlider = findViewById(R.id.numPatternSlider);
-        numBitsSlider = findViewById(R.id.numBitsSlider);
+
+        if(selectedMethod.equals("Custom")) {
+            Intent intent = getIntent();
+            customNumPatterns = intent.getIntExtra("customNumPatterns", 3);
+            customNumBits = intent.getIntExtra("customNumBits", 1024);
+        }
+
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
         progressText.setText(R.string.inProgressText);
@@ -247,9 +251,11 @@ public class DataDissolveActivity extends AppCompatActivity {
         }
     }
 
-    private void DissolveDataCustom(Uri fileUri) {
-        customNumPatterns = (int)numPatternsSlider.getValue();
-        customNumBits = (int)numBitsSlider.getValue();
+    private void DissolveDataCustom(Uri fileUri, Integer customNumPatterns, Integer customNumBits) {
+
+
+        Log.d("DataDissolveActivity Custom",  "customNumPatterns: " + customNumPatterns.toString());
+        Log.d("DataDissolveActivity Custom",  "customNumBits: " + customNumBits.toString());
 
         try {
             // Open the file for both reading and writing
@@ -335,7 +341,7 @@ public class DataDissolveActivity extends AppCompatActivity {
                             DissolveSchneier(uri);
                             break;
                         case "Custom":
-                            DissolveDataCustom(uri);
+                            DissolveDataCustom(uri, customNumPatterns, customNumBits);
                             break;
                         default:
                             DataDissolveDefault(uri);
