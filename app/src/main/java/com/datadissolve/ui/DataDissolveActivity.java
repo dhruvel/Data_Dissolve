@@ -190,32 +190,15 @@ public class DataDissolveActivity extends AppCompatActivity {
 
     private void DissolveCustom(DataDissolveAsyncTask task, Uri fileUri){
         try {
-            // Open the file for both reading and writing
-            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
-            assert pfd != null;
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply Custo method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataCustom(data, customNumPatterns, customNumBits);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
-
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
         } catch (Exception e) {
             e.printStackTrace();
