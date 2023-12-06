@@ -12,16 +12,17 @@ import java.security.SecureRandom;
  */
 public class DataSanitization {
     public static void wipeDataGutmann(byte[] data) {
-        byte[] pattern1 = {(byte) 0x55, (byte) 0xAA};
-        byte[] pattern2 = {(byte) 0x92, (byte) 0x49};
-        byte[] pattern3 = {(byte) 0x49, (byte) 0x92};
-        byte[] pattern4 = {(byte) 0x00, (byte) 0xFF};
-        byte[] pattern5 = {(byte) 0xFF, (byte) 0x00};
-        byte[] pattern6 = {(byte) 0x6D, (byte) 0xB6};
-        byte[] pattern7 = {(byte) 0xB6, (byte) 0x6D};
-        byte[] pattern8 = {(byte) 0x00, (byte) 0x00};
-
-        byte[][] patterns = {pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, pattern7, pattern8};
+        byte[][] patterns = new byte[35][];
+        for (int i = 0; i < 4; i++) {
+            patterns[i] = new byte[]{(byte) 0xFF};
+        }
+        for (int i = 4; i < 31; i++) {
+            patterns[i] = new byte[1];
+            new SecureRandom().nextBytes(patterns[i]);
+        }
+        for (int i = 31; i < 35; i++) {
+            patterns[i] = new byte[]{(byte) 0x00};
+        }
 
         for (byte[] pattern : patterns) {
             for (int j = 0; j < data.length; j += pattern.length) {

@@ -26,6 +26,8 @@ import com.google.android.material.slider.Slider;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
 
@@ -136,105 +138,57 @@ public class DataDissolveActivity extends AppCompatActivity {
         }
     }
 
-    private void DissolveGutmann(Uri fileUri) {
-        try (ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "w")) {
-            assert pfd != null;
+    private void DissolveGutmann(DataDissolveAsyncTask task, Uri fileUri) {
+        try {
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply Gutmann method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataGutmann(data);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private void DissolveDoD(Uri fileUri) {
+    private void DissolveDoD(DataDissolveAsyncTask task, Uri fileUri) {
         try {
-            // Open the file for both reading and writing
-            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
-            assert pfd != null;
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply DoD method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataDoD(data);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
-
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void DissolveSchneier(Uri fileUri) {
+    private void DissolveSchneier(DataDissolveAsyncTask task, Uri fileUri) {
         try {
-            // Open the file for both reading and writing
-            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
-            assert pfd != null;
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply Schneier method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataSchneier(data);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
-
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void DissolveCustom(Uri fileUri){
+    private void DissolveCustom(DataDissolveAsyncTask task, Uri fileUri){
         try {
             // Open the file for both reading and writing
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
@@ -305,17 +259,17 @@ public class DataDissolveActivity extends AppCompatActivity {
             if (uri != null) {
                 try {
                     switch (selectedMethod) {
-                        case "Gutmann1"://TODO: Change to Gutmann
-                            DissolveGutmann(uri);
+                        case "Gutmann":
+                            DissolveGutmann(this, uri);
                             break;
-                        case "DoD1"://TODO: Change to DoD
-                            DissolveDoD(uri);
+                        case "DoD":
+                            DissolveDoD(this, uri);
                             break;
-                        case "Schneier1"://TODO: Change to Schneier
-                            DissolveSchneier(uri);
+                        case "Schneier":
+                            DissolveSchneier(this, uri);
                             break;
                         case "Custom":
-                            DissolveCustom(uri);
+                            DissolveCustom(this, uri);
                             break;
                         default:
                             DissolveDefault(uri);
