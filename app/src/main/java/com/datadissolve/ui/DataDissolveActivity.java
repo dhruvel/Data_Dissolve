@@ -23,8 +23,6 @@ import com.datadissolve.R;
 import com.datadissolve.util.DataSanitization;
 import com.google.android.material.slider.Slider;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
