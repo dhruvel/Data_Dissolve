@@ -32,7 +32,7 @@ public class ItemListFragment extends Fragment {
     private List<String> selectionListFromDB;
     private LinearLayout buttonInit;
     private LinearLayout buttonPerformDD;
-    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider", "Custom");
+    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "DoD", "Schneier", "Custom");
     private ItemListAdapter adapter;
     private ItemDataSource dataSource;
     private TextView ddDescription;
@@ -54,9 +54,9 @@ public class ItemListFragment extends Fragment {
         dataSource = new ItemDataSource(requireActivity());
         ddDescription = view.findViewById(R.id.data_dissolve_description_tv);
         selectionListFromDB = fetchItemsFromDatabase(dataSource);
-        if(selectionListFromDB.size() > 0) {
-            selectedItem = selectionListFromDB.get(0);
-        }
+//        if(selectionListFromDB.size() > 0) {
+//            selectedItem = selectionListFromDB.get(0);
+//        }
         buttonInit = view.findViewById(R.id.button_init);
         buttonPerformDD = view.findViewById(R.id.perform_data_dissolve_ll);
         adapter = new ItemListAdapter(selectionListFromDB);
@@ -68,10 +68,10 @@ public class ItemListFragment extends Fragment {
 
     private void setupButtonPerformDD() {
         buttonPerformDD.setOnClickListener(v -> {
-            if ("Custom".equals(selectedItem)) {
+            if (selectedItem.equals("Custom")) {
                 Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
                 customIntent.putExtra("selectedDataDissolveMethod", selectedItem);
-                startActivityForResult(customIntent, 1);
+                startActivity(customIntent);
             } else {
                 Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
                 intent.putExtra("selectedDataDissolveMethod", selectedItem);
@@ -164,7 +164,7 @@ public class ItemListFragment extends Fragment {
         public void onClick(View v) {
             Toast.makeText(getActivity(), getString(R.string.toast_clicked_on) + currentSelection, Toast.LENGTH_SHORT).show();
 
-            if ("Custom".equals(currentSelection)) {
+            if (currentSelection.equals("Custom")) {
                 Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
                 customIntent.putExtra("selectedDataDissolveMethod", currentSelection);
                 startActivityForResult(customIntent, 1);
@@ -186,11 +186,11 @@ public class ItemListFragment extends Fragment {
                 ddDescription.setText(getString(R.string.description_gutmann));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
-            case "Dod":
+            case "DoD":
                 ddDescription.setText(getString(R.string.description_dod));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
-            case "Schneider":
+            case "Schneier":
                 ddDescription.setText(getString(R.string.description_schneier));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
