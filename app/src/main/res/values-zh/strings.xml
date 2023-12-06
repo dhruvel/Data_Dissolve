@@ -75,5 +75,6 @@
     <string name="numPatternsAlert">增加的模式数量不能超过35</string>
     <string name="numBitsAlert">位数必须大于1且小于100</string>
 
+    <string name="pin_hint">默认值: 1234</string>
 
 </resources>

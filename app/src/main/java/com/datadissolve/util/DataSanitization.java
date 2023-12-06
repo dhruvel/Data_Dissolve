@@ -87,12 +87,11 @@ public class DataSanitization {
         Arrays.fill(data, (byte) 0x00);
     }
 
-    public static void wipeDataCustom(byte[] data, int numOfPatterns, int patternSize) {
-        byte[][] patterns = new byte[numOfPatterns][patternSize];
-        for (int i = 0; i < numOfPatterns; i++) {
+    public static void wipeDataCustom(byte[] data, int numPatterns, int numBits) {
+        byte[][] patterns = new byte[numPatterns][numBits];
+        for (int i = 0; i < numPatterns; i++) {
             new SecureRandom().nextBytes(patterns[i]);
         }
-
         for (byte[] pattern : patterns) {
             for (int j = 0; j < data.length; j += pattern.length) {
                 for (int k = 0; k < pattern.length; k++) {
@@ -104,4 +103,5 @@ public class DataSanitization {
         }
         Arrays.fill(data, (byte) 0x00);
     }
+
 }

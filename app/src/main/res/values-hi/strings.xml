@@ -70,4 +70,6 @@
     <string name="numPatternsAlert">5 से अधिक पैटर्न की संख्या बढ़ाने से कस्टम एल्गोरिदम को काफी धीमा कर देगा</string>
     <string name="numBitsAlert">256 से अधिक बिट्स की संख्या बढ़ाने से कस्टम एल्गोरिदम को काफी धीमा कर देगा</string>
 
+    <string name="pin_hint">डिफ़ॉल्ट: 1234</string>
+
 </resources>
