@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.datadissolve.ui.DataDissolveActivity"
     android:background="#ADD8E6">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:ignore="MissingConstraints" />
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -55,13 +61,17 @@
         app:layout_constraintVertical_bias="0.75"
         tools:visibility="visible" />
 
-    <Button
+    <CheckBox
         android:id="@+id/deleteFileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="35dp"
         android:text="@string/deleteFileButton"
+        app:layout_constraintBottom_toTopOf="@+id/progressText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
 

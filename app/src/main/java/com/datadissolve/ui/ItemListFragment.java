@@ -32,10 +32,12 @@ public class ItemListFragment extends Fragment {
     private List<String> selectionListFromDB;
     private LinearLayout buttonInit;
     private LinearLayout buttonPerformDD;
-    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "Dod", "Schneider");
+    private final List<String> dataDissolveList = Arrays.asList("Default", "Gutmann", "DoD", "Schneier", "Custom");
     private ItemListAdapter adapter;
     private ItemDataSource dataSource;
     private TextView ddDescription;
+    private String selectedItem;
+
     public ItemListFragment() {}
 
     private List<String> fetchItemsFromDatabase(ItemDataSource dataSource) {
@@ -52,6 +54,9 @@ public class ItemListFragment extends Fragment {
         dataSource = new ItemDataSource(requireActivity());
         ddDescription = view.findViewById(R.id.data_dissolve_description_tv);
         selectionListFromDB = fetchItemsFromDatabase(dataSource);
+//        if(selectionListFromDB.size() > 0) {
+//            selectedItem = selectionListFromDB.get(0);
+//        }
         buttonInit = view.findViewById(R.id.button_init);
         buttonPerformDD = view.findViewById(R.id.perform_data_dissolve_ll);
         adapter = new ItemListAdapter(selectionListFromDB);
@@ -63,9 +68,15 @@ public class ItemListFragment extends Fragment {
 
     private void setupButtonPerformDD() {
         buttonPerformDD.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
-            intent.putExtra("selectedDataDissolveMethod", selectionListFromDB.get(0));
-            startActivityForResult(intent, 1);
+            if (selectedItem.equals("Custom")) {
+                Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
+                customIntent.putExtra("selectedDataDissolveMethod", selectedItem);
+                startActivity(customIntent);
+            } else {
+                Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
+                intent.putExtra("selectedDataDissolveMethod", selectedItem);
+                startActivity(intent);
+            }
         });
     }
 
@@ -152,8 +163,16 @@ public class ItemListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Toast.makeText(getActivity(), getString(R.string.toast_clicked_on) + currentSelection, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
-            intent.putExtra("selectionName", currentSelection);
+
+            if (currentSelection.equals("Custom")) {
+                Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
+                customIntent.putExtra("selectedDataDissolveMethod", currentSelection);
+                startActivityForResult(customIntent, 1);
+            } else {
+                Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
+                intent.putExtra("selectedDataDissolveMethod", currentSelection);
+                startActivity(intent);
+            }
         }
     }
 
@@ -167,12 +186,16 @@ public class ItemListFragment extends Fragment {
                 ddDescription.setText(getString(R.string.description_gutmann));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
-            case "Dod":
+            case "DoD":
                 ddDescription.setText(getString(R.string.description_dod));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
-            case "Schneider":
+            case "Schneier":
                 ddDescription.setText(getString(R.string.description_schneier));
+                buttonPerformDD.setVisibility(View.VISIBLE);
+                break;
+            case "Custom":
+                ddDescription.setText(getString(R.string.description_custom));
                 buttonPerformDD.setVisibility(View.VISIBLE);
                 break;
             default:
@@ -180,6 +203,7 @@ public class ItemListFragment extends Fragment {
                 buttonPerformDD.setVisibility(View.INVISIBLE);
                 break;
         }
+        selectedItem = currentSelection;
     }
 
     private void launchDataDissolveActivity(String currentSelection) {

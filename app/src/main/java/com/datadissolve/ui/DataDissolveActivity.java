@@ -8,20 +8,26 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.documentfile.provider.DocumentFile;
 
-import com.datadissolve.util.DataSanitization;
 import com.datadissolve.R;
+import com.datadissolve.util.DataSanitization;
+import com.google.android.material.slider.Slider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.Random;
 
@@ -31,14 +37,16 @@ import java.util.Random;
  */
 public class DataDissolveActivity extends AppCompatActivity {
     private static final int PICK_FILE_REQUEST = 1;
-    private String selectedMethod = "Default";
+    private String selectedMethod;
     private ProgressBar progressBar;
     private TextView progressText;
     private ImageView successImage;
     private TextView backBtn;
     private DocumentFile documentFile;
+    private CheckBox deleteFileBtn;
+    private Integer customNumPatterns;
+    private Integer customNumBits;
 
-    private Button deleteFileBtn;
 
     private Uri uri;
 
@@ -49,17 +57,40 @@ public class DataDissolveActivity extends AppCompatActivity {
 
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
+
         progressBar = findViewById(R.id.progressBar);
         progressText = findViewById(R.id.progressText);
         progressText.setText(R.string.inProgressText);
         successImage = findViewById(R.id.successImage);
         backBtn = findViewById(R.id.backButton);
         deleteFileBtn = findViewById(R.id.deleteFileButton);
-        backBtn.setOnClickListener(v -> finish());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        deleteFileBtn.setOnClickListener(v -> deleteFile(uri));
+        final boolean[] patternWarningShown = {false};
+        final boolean[] bitsWarningShown = {false};
 
+        Slider numPatternSlider = findViewById(R.id.numPatternSlider);
+        Slider numBitsSlider = findViewById(R.id.numBitsSlider);
+
+        // Enable the Up button
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(deleteFileBtn.isChecked()) {
+                    deleteFile(uri);
+                }
+                finish();
+            }
+        });
         requestDocument();
+        DissolveData(uri);
     }
 
     private void requestDocument() {
@@ -81,11 +112,10 @@ public class DataDissolveActivity extends AppCompatActivity {
     }
 
     private void DissolveData(Uri fileUri) {
-        DataDissolveAsyncTask asyncTask = new DataDissolveAsyncTask(this, progressBar, fileUri, selectedMethod);
-        asyncTask.execute();
+        new DataDissolveAsyncTask(this, progressBar, fileUri, selectedMethod).execute();
     }
 
-    private void DataDissolveDefault(Uri fileUri) {
+    private void DissolveDefault(Uri fileUri) {
         try {
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "w");
             assert pfd != null;
@@ -102,94 +132,63 @@ public class DataDissolveActivity extends AppCompatActivity {
             }
             outputStream.close();
             pfd.close();
-            // Delete the file
-//          deleteFile(fileUri);
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void DissolveDataGutmann(Uri fileUri) {
+    private void DissolveGutmann(DataDissolveAsyncTask task, Uri fileUri) {
         try {
-            // Open the file for both reading and writing
-            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
-            assert pfd != null;
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply Gutmann method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataGutmann(data);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
-
-            // Delete the file
-//            DocumentFile documentFile = DocumentFile.fromSingleUri(this, fileUri);
-//          deleteFile(fileUri);
-
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void DissolveDataDoD(Uri fileUri) {
+    private void DissolveDoD(DataDissolveAsyncTask task, Uri fileUri) {
         try {
-            // Open the file for both reading and writing
-            ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
-            assert pfd != null;
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
 
-            // Read the data from the file into a byte array
-            FileInputStream fileInputStream = new FileInputStream(pfd.getFileDescriptor());
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int bytesRead;
-            byte[] buffer = new byte[1024];
-
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Apply DoD method to the data
-            byte[] data = byteArrayOutputStream.toByteArray();
             DataSanitization.wipeDataDoD(data);
 
-            // Write the modified data back to the file
-            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
-            fileOutputStream.write(data);
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
 
-            // Close the streams and file descriptor
-            fileInputStream.close();
-            fileOutputStream.close();
-            pfd.close();
-
-            // Delete the file
-//            deleteFile(fileUri);
-
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void DissolveSchneier(Uri fileUri) {
+    private void DissolveSchneier(DataDissolveAsyncTask task, Uri fileUri) {
+        try {
+            InputStream inputStream = task.context.getContentResolver().openInputStream(fileUri);
+            byte[] data = inputStream.readAllBytes();
+            inputStream.close();
+
+            DataSanitization.wipeDataSchneier(data);
+
+            OutputStream outputStream = task.context.getContentResolver().openOutputStream(fileUri);
+            outputStream.write(data);
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void DissolveCustom(DataDissolveAsyncTask task, Uri fileUri){
         try {
             // Open the file for both reading and writing
             ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(fileUri, "rw");
@@ -205,9 +204,9 @@ public class DataDissolveActivity extends AppCompatActivity {
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
             }
 
-            // Apply Schneier method to the data
+            // Apply Custo method to the data
             byte[] data = byteArrayOutputStream.toByteArray();
-            DataSanitization.wipeDataSchneier(data);
+            DataSanitization.wipeDataCustom(data, customNumPatterns, customNumBits);
 
             // Write the modified data back to the file
             FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
@@ -218,13 +217,8 @@ public class DataDissolveActivity extends AppCompatActivity {
             fileOutputStream.close();
             pfd.close();
 
-            // Delete the file
-//            deleteFile(fileUri);
-
-            Toast.makeText(this, R.string.toast_dissolve_data_successfully, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, R.string.toast_dissolve_data_failed, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -265,20 +259,20 @@ public class DataDissolveActivity extends AppCompatActivity {
             if (uri != null) {
                 try {
                     switch (selectedMethod) {
-                        case "Default":
-                            DataDissolveDefault(uri);
-                            break;
                         case "Gutmann":
-                            DissolveDataGutmann(uri);
+                            DissolveGutmann(this, uri);
                             break;
                         case "DoD":
-                            DissolveDataDoD(uri);
+                            DissolveDoD(this, uri);
                             break;
                         case "Schneier":
-                            DissolveSchneier(uri);
+                            DissolveSchneier(this, uri);
+                            break;
+                        case "Custom":
+                            DissolveCustom(this, uri);
                             break;
                         default:
-                            DataDissolveDefault(uri);
+                            DissolveDefault(uri);
                             break;
                     }
                     result = "Success";
@@ -297,14 +291,17 @@ public class DataDissolveActivity extends AppCompatActivity {
             successImage.setVisibility(View.VISIBLE);
             backBtn.setVisibility(View.VISIBLE);
             if ("Success".equals(result)) {
-                Toast.makeText(context, R.string.toast_success, Toast.LENGTH_SHORT).show();
-                progressText.setText(R.string.textDisplaySuccess);
-                successImage.setImageResource(R.drawable.ic_success);
-            }
-            else {
-                Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show();
-                progressText.setText(R.string.textDisplayFailed);
-                successImage.setImageResource(R.drawable.task_error);
+                runOnUiThread(() -> {
+                    Toast.makeText(context, R.string.toast_success, Toast.LENGTH_SHORT).show();
+                    progressText.setText(R.string.textDisplaySuccess);
+                    successImage.setImageResource(R.drawable.ic_success);
+                });
+            } else {
+                runOnUiThread(() -> {
+                    Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show();
+                    progressText.setText(R.string.textDisplayFailed);
+                    successImage.setImageResource(R.drawable.task_error);
+                });
             }
         }
     }

@@ -30,8 +30,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_shape"
-            android:hint="please enter the Pin"
-            android:textSize="24dp"
+            android:hint="@string/pin_hint"
+            android:textSize="24sp"
             android:inputType="numberPassword"
             android:singleLine="true" />
 
@@ -221,11 +221,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

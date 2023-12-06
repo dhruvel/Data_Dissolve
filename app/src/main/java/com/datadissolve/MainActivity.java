@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button login_button = findViewById(R.id.loginButton);
-        login_button.setOnClickListener(v -> launchDataSelectionActivity());
 
         pinEntry = findViewById(R.id.pinEntry);
 
@@ -32,11 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         login_button.setOnClickListener( v -> login_handler());
         clear_button.setOnClickListener(v -> clear_button_handler());
-    }
-
-    private void launchDataSelectionActivity() {
-        android.content.Intent intent = new android.content.Intent(this, DataSanitizationSelectionActivity.class);
-        startActivity(intent);
     }
 
     public void onNumericButtonClick(View view) {
@@ -51,18 +45,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login_handler() {
-        String correctPin = "1234";
+        String correctPin = ""; //TODO: Add correct pin here
 
         if(enteredPin.toString().equals(correctPin)) {
-            Toast.makeText(this, R.string.toast_login_successful, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, DataSanitizationSelectionActivity.class);
             startActivity(intent);
-            finish();
         }
 
         else {
-            Toast.makeText(this, R.string.toast_incorrect_pin_try_again, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incorrect PIN, try again", Toast.LENGTH_SHORT).show();
             enteredPin.setLength(0);
             pinEntry.setText("");
         }
