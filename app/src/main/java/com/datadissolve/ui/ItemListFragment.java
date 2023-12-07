@@ -54,9 +54,6 @@ public class ItemListFragment extends Fragment {
         dataSource = new ItemDataSource(requireActivity());
         ddDescription = view.findViewById(R.id.data_dissolve_description_tv);
         selectionListFromDB = fetchItemsFromDatabase(dataSource);
-//        if(selectionListFromDB.size() > 0) {
-//            selectedItem = selectionListFromDB.get(0);
-//        }
         buttonInit = view.findViewById(R.id.button_init);
         buttonPerformDD = view.findViewById(R.id.perform_data_dissolve_ll);
         adapter = new ItemListAdapter(selectionListFromDB);
@@ -167,7 +164,7 @@ public class ItemListFragment extends Fragment {
             if (currentSelection.equals("Custom")) {
                 Intent customIntent = new Intent(getActivity(), CustomDataSanitizationActivity.class);
                 customIntent.putExtra("selectedDataDissolveMethod", currentSelection);
-                startActivityForResult(customIntent, 1);
+                startActivity(customIntent);
             } else {
                 Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
                 intent.putExtra("selectedDataDissolveMethod", currentSelection);
@@ -204,12 +201,6 @@ public class ItemListFragment extends Fragment {
                 break;
         }
         selectedItem = currentSelection;
-    }
-
-    private void launchDataDissolveActivity(String currentSelection) {
-        Intent intent = new Intent(getActivity(), DataDissolveActivity.class);
-        intent.putExtra("selectedDataDissolveMethod", currentSelection);
-        startActivity(intent);
     }
 
     private void deleteItemFromDB(String itemText) {

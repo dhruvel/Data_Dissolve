@@ -21,7 +21,6 @@ import androidx.documentfile.provider.DocumentFile;
 
 import com.datadissolve.R;
 import com.datadissolve.util.DataSanitization;
-import com.google.android.material.slider.Slider;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -53,6 +52,9 @@ public class DataDissolveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_disssolve);
 
+        customNumPatterns = getIntent().getIntExtra("customNumPatterns", 3);
+        customNumBits = getIntent().getIntExtra("customNumBits", 128);
+
         selectedMethod = getIntent().getStringExtra("selectedDataDissolveMethod");
         Toast.makeText(this, getString(R.string.toast_selected_method) + selectedMethod, Toast.LENGTH_SHORT).show();
 
@@ -68,8 +70,8 @@ public class DataDissolveActivity extends AppCompatActivity {
         final boolean[] patternWarningShown = {false};
         final boolean[] bitsWarningShown = {false};
 
-        Slider numPatternSlider = findViewById(R.id.numPatternSlider);
-        Slider numBitsSlider = findViewById(R.id.numBitsSlider);
+//        Slider numPatternSlider = findViewById(R.id.numPatternSlider);
+//        Slider numBitsSlider = findViewById(R.id.numBitsSlider);
 
         // Enable the Up button
         ActionBar actionBar = getSupportActionBar();
